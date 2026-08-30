@@ -1,79 +1,80 @@
 @import "tailwindcss";
 
 /* =========================================================================
-   DESIGN SYSTEM — Wayang Bali Learning Platform
+   DESIGN SYSTEM — Mondays (dashboard) theme
    -------------------------------------------------------------------------
-   Toko desain terpusat menggunakan CSS custom properties. Untuk mengganti
-   tema (mis. sesuai screenshot), cukup ubah nilai di bagian :root.
+   Diadopsi dari referensi "Mondays" dashboard. Bersih, modern, SaaS-style:
+   light background, white cards, rounded corners, blue accent, status pills.
+   Token terpusat di CSS custom properties agar mudah di-reskin.
    ========================================================================= */
 
 @theme {
-  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Marcellus", ui-serif, Georgia, serif;
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
 
-  --color-cream-50: #fdf9f1;
-  --color-cream-100: #faf3e6;
-  --color-cream-200: #f3e8d4;
+  --color-ink-900: #0f172a;
+  --color-ink-700: #1f2a3d;
+  --color-ink-500: #46505f;
+  --color-ink-400: #64748b;
+  --color-ink-300: #94a3b8;
 
-  --color-cocoa-500: #7c5a3d;
-  --color-cocoa-600: #5f4128;
-  --color-cocoa-700: #4a301b;
-  --color-cocoa-800: #372316;
-  --color-cocoa-900: #241509;
+  --color-azure-700: #1d4ed8;
+  --color-azure-600: #2563eb;
+  --color-azure-500: #3b82f6;
+  --color-azure-50: #eff4ff;
 
-  --color-gold-300: #e5c47a;
-  --color-gold-400: #d8ad54;
-  --color-gold-500: #c9942f;
-  --color-gold-600: #a97a24;
+  --color-mint-600: #16a34a;
+  --color-mint-100: #e7f6ec;
 
-  --color-batik-400: #b03a2e;
-  --color-batik-500: #97281c;
-  --color-batik-600: #7c1e14;
+  --color-violet-600: #9333ea;
+  --color-violet-100: #f5e9ff;
 
-  --color-ember-300: #f4c29a;
-  --color-ember-500: #d9764a;
-  --color-ember-600: #b85a33;
+  --color-rose-600: #c026d3;
+  --color-rose-100: #fae8ff;
 
-  --color-teal-500: #2f8f78;
-
-  --color-night-800: #241d17;
-  --color-night-900: #16110c;
+  --color-lime-500: #84cc16;
 }
 
 :root {
-  /* Palet inti */
-  --bg: #fdf9f1;
-  --bg-alt: #faf3e6;
+  /* Latar & permukaan */
+  --bg: #f6f8fb;
+  --bg-alt: #eef2f7;
   --surface: #ffffff;
-  --surface-muted: #f7efe1;
-  --border: #e8dcc6;
-  --border-strong: #d8c6a6;
+  --surface-muted: #f8fafc;
+  --border: #eceff3;
+  --border-strong: #e2e8f0;
 
-  --text: #2a2019;
-  --text-muted: #6b5b4a;
-  --text-soft: #8a7a68;
+  /* Teks */
+  --text: #0f172a;
+  --text-muted: #64748b;
+  --text-soft: #94a3b8;
 
-  --accent: #c9942f;      /* emas wayang */
-  --accent-hover: #a97a24;
-  --accent-soft: #f6e7c6;
-  --danger: #b03a2e;      /* batik merah */
-  --danger-soft: #f8e4e0;
-  --success: #2f8f78;
+  /* Aksen (biru utama) */
+  --accent: #2563eb;
+  --accent-hover: #1d4ed8;
+  --accent-soft: #eff4ff;
+  --accent-ring: rgba(37, 99, 235, 0.18);
 
-  /* Tipografi */
-  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Marcellus", ui-serif, Georgia, serif;
+  /* Status */
+  --success: #16a34a;
+  --success-soft: #e7f6ec;
+  --pending: #9333ea;
+  --pending-soft: #f5e9ff;
+  --danger: #c026d3;
+  --danger-soft: #fae8ff;
+  --info: #2563eb;
+  --info-soft: #eff4ff;
 
   /* Radius */
-  --radius-sm: 0.5rem;
-  --radius-md: 0.875rem;
-  --radius-lg: 1.375rem;
-  --radius-xl: 2rem;
+  --radius-sm: 0.6rem;
+  --radius-md: 0.9rem;
+  --radius-lg: 1.15rem;
+  --radius-xl: 1.5rem;
+  --radius-full: 999px;
 
   /* Bayangan */
-  --shadow-sm: 0 1px 2px rgba(36, 21, 9, 0.06), 0 1px 3px rgba(36, 21, 9, 0.04);
-  --shadow-md: 0 4px 14px -2px rgba(36, 21, 9, 0.12);
-  --shadow-lg: 0 14px 34px -8px rgba(36, 21, 9, 0.18);
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04), 0 1px 4px rgba(15, 23, 42, 0.05);
+  --shadow-md: 0 4px 16px -4px rgba(15, 23, 42, 0.08);
+  --shadow-lg: 0 12px 36px -8px rgba(15, 23, 42, 0.14);
 
   /* Spasi terukur */
   --space-1: 0.25rem;
@@ -86,7 +87,6 @@
   --space-10: 2.5rem;
   --space-12: 3rem;
   --space-16: 4rem;
-  --space-20: 5rem;
 }
 
 * {
@@ -107,82 +107,103 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-/* ============================ Komponen dasar ============================ */
+/* ============================ Layout shell ============================ */
 
 .container-wrap {
   width: 100%;
-  max-width: 74rem;
+  max-width: 76rem;
   margin-inline: auto;
   padding-inline: var(--space-5);
 }
 
-.font-display {
-  font-family: var(--font-display);
+@media (min-width: 768px) {
+  .container-wrap { padding-inline: var(--space-8); }
+}
+
+/* ============================ Tipografi ============================ */
+
+h1, h2, h3, .display {
+  font-family: var(--font-sans);
+  color: var(--text);
+  line-height: 1.2;
   letter-spacing: -0.01em;
 }
 
-h1, h2, h3, .display {
-  font-family: var(--font-display);
-  color: var(--text);
-  line-height: 1.15;
-}
-
-h1 { font-size: clamp(2rem, 5vw, 3.25rem); font-weight: 400; }
-h2 { font-size: clamp(1.5rem, 3vw, 2.25rem); font-weight: 400; }
-h3 { font-size: 1.25rem; font-weight: 500; }
+h1 { font-size: clamp(1.75rem, 3vw, 2.4rem); font-weight: 700; }
+h2 { font-size: clamp(1.35rem, 2.2vw, 1.8rem); font-weight: 700; }
+h3 { font-size: 1.05rem; font-weight: 600; }
 
 .eyebrow {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.4rem;
   text-transform: uppercase;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.1em;
   font-size: 0.72rem;
   font-weight: 700;
-  color: var(--accent-hover);
+  color: var(--accent);
 }
+
+/* ============================ Kartu ============================ */
 
 .card {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-sm);
-  transition: box-shadow 0.22s ease, transform 0.22s ease, border-color 0.22s ease;
+  transition: box-shadow 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
 }
 
 .card-hover:hover {
-  box-shadow: var(--shadow-lg);
-  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
   border-color: var(--border-strong);
 }
+
+.card-pad { padding: var(--space-6); }
+
+/* Header kartu (judul kanan-kiri) */
+.card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-5) var(--space-6);
+  border-bottom: 1px solid var(--border);
+}
+
+.card-head h3 { display: flex; align-items: center; gap: 0.5rem; }
+
+/* ============================ Tombol ============================ */
 
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  padding: 0.7rem 1.25rem;
-  border-radius: 999px;
+  padding: 0.62rem 1.15rem;
+  border-radius: var(--radius-full);
   font-weight: 600;
-  font-size: 0.9rem;
-  transition: all 0.18s ease;
+  font-size: 0.875rem;
+  transition: all 0.16s ease;
   border: 1px solid transparent;
   cursor: pointer;
+  white-space: nowrap;
 }
 
 .btn-primary {
   background: var(--accent);
-  color: #2a1a08;
+  color: #fff;
   box-shadow: var(--shadow-sm);
 }
-.btn-primary:hover { background: var(--accent-hover); color: #fff; }
+.btn-primary:hover { background: var(--accent-hover); }
 
 .btn-outline {
-  background: transparent;
+  background: var(--surface);
   color: var(--text);
   border-color: var(--border-strong);
 }
-.btn-outline:hover { background: var(--surface-muted); border-color: var(--accent); }
+.btn-outline:hover { background: var(--surface-muted); border-color: var(--accent); color: var(--accent); }
 
 .btn-ghost {
   background: transparent;
@@ -194,77 +215,126 @@ h3 { font-size: 1.25rem; font-weight: 500; }
   background: var(--danger);
   color: #fff;
 }
-.btn-danger:hover { background: var(--batik-600); }
+.btn-danger:hover { filter: brightness(0.92); }
+
+.btn-soft {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+.btn-soft:hover { background: #dbe8ff; }
+
+.btn-sm { padding: 0.4rem 0.85rem; font-size: 0.8rem; }
+
+/* ============================ Chip / Badge status ============================ */
 
 .chip {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  padding: 0.28rem 0.75rem;
-  border-radius: 999px;
-  font-size: 0.76rem;
+  padding: 0.3rem 0.85rem;
+  border-radius: var(--radius-full);
+  font-size: 0.8rem;
   font-weight: 600;
   background: var(--accent-soft);
-  color: var(--accent-hover);
-  border: 1px solid var(--accent-soft);
+  color: var(--accent);
+  border: 1px solid transparent;
+  white-space: nowrap;
 }
 
 .chip-muted {
   background: var(--surface-muted);
   color: var(--text-muted);
-  border-color: var(--border);
 }
 
-.chip-danger {
-  background: var(--danger-soft);
-  color: var(--danger);
-  border-color: var(--danger-soft);
+.chip-success { background: var(--success-soft); color: var(--success); }
+.chip-pending { background: var(--pending-soft); color: var(--pending); }
+.chip-danger  { background: var(--danger-soft);  color: var(--danger); }
+.chip-info    { background: var(--info-soft);    color: var(--info); }
+.chip-outline { background: transparent; border-color: var(--border-strong); color: var(--text-muted); }
+
+/* ============================ Tabel ============================ */
+
+.table-row {
+  display: grid;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-4) var(--space-6);
+  border-bottom: 1px solid var(--border);
+  transition: background 0.15s ease;
+}
+.table-row:last-child { border-bottom: 0; }
+.table-row:hover { background: var(--surface-muted); }
+
+.table-head {
+  display: grid;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-3) var(--space-6);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-soft);
+  border-bottom: 1px solid var(--border);
 }
 
-.divider {
-  height: 1px;
-  background: var(--border);
-  border: 0;
+/* ============================ Avatar ============================ */
+
+.avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: var(--radius-full);
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 0.7rem;
+  font-weight: 700;
+  flex-shrink: 0;
 }
+
+.avatar-sm { width: 1.7rem; height: 1.7rem; font-size: 0.62rem; }
+
+/* ============================ Nav sidebar ============================ */
+
+.side-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.62rem 0.9rem;
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  transition: background 0.16s ease, color 0.16s ease;
+}
+.side-nav-item:hover { background: var(--surface-muted); color: var(--text); }
+.side-nav-item.active {
+  background: var(--accent);
+  color: #fff;
+  box-shadow: var(--shadow-sm);
+}
+.side-nav-item.active svg { color: #fff; }
 
 /* ============================ Papan gambar ============================ */
 
-.canvas-frame {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-md);
-  overflow: hidden;
-  position: relative;
-}
-
 .canvas-board {
   background:
-    radial-gradient(circle at 50% 40%, rgba(201,148,47,0.05), transparent 60%),
-    var(--cream-50);
+    radial-gradient(circle at 50% 40%, rgba(37, 99, 235, 0.05), transparent 60%),
+    var(--surface-muted);
   touch-action: none;
 }
 
-/* Input rentang yang emas */
-input[type="range"] {
-  accent-color: var(--accent);
-}
+input[type="range"] { accent-color: var(--accent); }
+input[type="checkbox"] { accent-color: var(--accent); }
 
-/* Link andalan */
 a { transition: color 0.15s ease; }
+::selection { background: var(--accent-soft); color: var(--accent-hover); }
 
-::selection {
-  background: var(--accent-soft);
-  color: var(--cocoa-800);
-}
-
-/* Scrollbar halus */
 ::-webkit-scrollbar { height: 10px; width: 10px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb {
-  background: var(--border-strong);
-  border-radius: 999px;
-}
+::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 999px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
 
 @media (prefers-reduced-motion: reduce) {

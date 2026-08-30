@@ -73,24 +73,24 @@ export default async function SejarahPage() {
   }
 
   return (
-    <div className="container-wrap py-12">
+    <div className="container-wrap py-6 md:py-8">
       <SectionHeading
         eyebrow="Materi 3 · Sejarah"
         title="Sejarah Wayang Bali"
         subtitle="Telusuri perjalanan wayang kulit Bali dari pengaruh Hindu-Majapahit, puncak keemasan Bali Hindu Klasik, hingga pengakuan dunia dan perkembangan modern."
       />
-      <div className="grid gap-5 sm:grid-cols-2">
+      <div className="grid gap-4 sm:grid-cols-2">
         {items.map((h) => (
-          <Link key={h.slug} href={`/sejarah/${h.slug}`} className="card card-hover flex flex-col gap-3 p-6">
+          <Link key={h.slug} href={`/sejarah/${h.slug}`} className="card card-hover flex flex-col gap-3 p-5">
             <div className="flex items-center justify-between">
-              <span className="grid h-10 w-10 place-items-center rounded-lg bg-[var(--accent-soft)] text-[var(--accent-hover)]">
-                <Clock size={19} aria-hidden />
+              <span className="grid h-10 w-10 place-items-center rounded-xl bg-[var(--accent-soft)] text-[var(--accent)]">
+                <Clock size={18} aria-hidden />
               </span>
               <span className="chip chip-muted">{h.period}</span>
             </div>
-            <h3 className="text-[1.1rem]">{h.title}</h3>
+            <h3 className="leading-snug">{h.title}</h3>
             <p className="flex-1 text-sm text-[var(--text-muted)]">{h.summary}</p>
-            <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--accent-hover)]">
+            <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--accent)]">
               Baca sejarah <ArrowRight size={14} aria-hidden />
             </span>
           </Link>

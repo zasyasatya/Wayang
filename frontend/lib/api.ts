@@ -4,7 +4,12 @@
  * (proksi Next) maupun di production (reverse proxy).
  */
 
-const API_BASE = "/api";
+// Di browser, gunakan path relatif (proksi Next). Di server (SSR), fetch butuh
+// URL absolut, jadi arahkan langsung ke backend. Keduanya mengarah ke sumber yang sama.
+const isServer = typeof window === "undefined";
+const SERVER_API_BASE =
+  process.env.WAYANG_BACKEND_URL ?? "http://localhost:8000/api";
+const API_BASE = isServer ? SERVER_API_BASE : "/api";
 
 export interface SourceLink {
   title: string;

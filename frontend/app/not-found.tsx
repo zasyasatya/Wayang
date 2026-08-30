@@ -3,8 +3,8 @@ import { Compass } from "lucide-react";
 
 export default function NotFound() {
   return (
-    <div className="container-wrap py-24 text-center">
-      <div className="mx-auto grid h-16 w-16 place-items-center rounded-2xl bg-[var(--accent-soft)] text-[var(--accent-hover)]">
+    <div className="container-wrap py-20 text-center">
+      <div className="mx-auto grid h-16 w-16 place-items-center rounded-2xl bg-[var(--accent-soft)] text-[var(--accent)]">
         <Compass size={30} aria-hidden />
       </div>
       <h1 className="mt-6">Laman tidak ditemukan</h1>

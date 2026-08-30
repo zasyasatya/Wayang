@@ -120,14 +120,14 @@ export default function TokohPage() {
   }, [items, role]);
 
   return (
-    <div className="container-wrap py-12">
+    <div className="container-wrap py-6 md:py-8">
       <SectionHeading
         eyebrow="Materi 2 · Tokoh"
         title="Tokoh yang Berperan dalam Wayang Bali"
         subtitle="Setiap tokoh membawa wanda dan watak tersendiri — dari kesatria halus ('alus') hingga raksasa ('denawa') dan panasar (pelawak)."
       />
 
-      <div className="mb-8 flex flex-wrap gap-2">
+      <div className="mb-6 flex flex-wrap gap-2">
         {ROLES.map((r) => (
           <button
             key={r}
@@ -142,22 +142,22 @@ export default function TokohPage() {
       {loading ? (
         <p className="text-[var(--text-muted)]">Memuat tokoh…</p>
       ) : (
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {filtered.map((c) => (
             <Link
               key={c.slug}
               href={`/tokoh/${c.slug}`}
-              className="card card-hover flex flex-col gap-3 p-6"
+              className="card card-hover flex flex-col gap-3 p-5"
             >
               <div className="flex items-center justify-between">
-                <span className="grid h-10 w-10 place-items-center rounded-lg bg-[var(--accent-soft)] text-[var(--accent-hover)]">
-                  <Users size={19} aria-hidden />
+                <span className="grid h-10 w-10 place-items-center rounded-xl bg-[var(--accent-soft)] text-[var(--accent)]">
+                  <Users size={18} aria-hidden />
                 </span>
                 <span className="chip chip-muted">{c.wanda || c.role}</span>
               </div>
-              <h3 className="text-[1.05rem]">{c.name}</h3>
+              <h3 className="leading-snug">{c.name}</h3>
               <p className="flex-1 text-sm text-[var(--text-muted)]">{c.summary}</p>
-              <span className="text-[0.7rem] font-bold uppercase tracking-[0.14em] text-[var(--text-soft)]">
+              <span className="text-[0.7rem] font-bold uppercase tracking-[0.1em] text-[var(--text-soft)]">
                 {c.role}
               </span>
             </Link>

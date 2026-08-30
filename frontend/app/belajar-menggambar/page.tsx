@@ -23,7 +23,7 @@ export default function BelajarMenggambarPage() {
   const [sil, setSil] = useState<Silhouette[]>([]);
   const [selected, setSelected] = useState<string>("arjuna");
   const [showGuide, setShowGuide] = useState(true);
-  const [strokeColor, setStrokeColor] = useState("#2B1B12");
+  const [strokeColor, setStrokeColor] = useState("#0f172a");
   const [lineWidth, setLineWidth] = useState(4);
   const [tool, setTool] = useState<Tool>("pen");
   const [result, setResult] = useState<GradingResult | null>(null);
@@ -193,14 +193,14 @@ export default function BelajarMenggambarPage() {
   }, [selected]);
 
   return (
-    <div className="container-wrap py-12">
+    <div className="container-wrap py-6 md:py-8">
       <SectionHeading
         eyebrow="Materi 4 · Praktik"
         title="Belajar Menggambar Pola & Siluet"
         subtitle="Pilih tokoh, gunakan garis bantu sebagai panduan, lalu gambar di atas kanvas. Setelah selesai, nilai hasilnya secara otomatis."
       />
 
-      <div className="grid gap-8 lg:grid-cols-[1fr_1.1fr]">
+      <div className="grid gap-5 lg:grid-cols-[1fr_1.1fr]">
         {/* Kontrol kiri */}
         <aside className="space-y-5">
           <div className="card p-5">
@@ -269,11 +269,11 @@ export default function BelajarMenggambarPage() {
                     aria-label="Warna tinta"
                   />
                   {[
-                    ["#2B1B12", "Cokelat tinta"],
-                    ["#97281c", "Merah batik"],
-                    ["#8a2d6b", "Magenta"],
-                    ["#c9942f", "Emas"],
-                    ["#1f6f5a", "Hijau"],
+                    ["#0f172a", "Tinta hitam"],
+                    ["#2563eb", "Biru"],
+                    ["#16a34a", "Hijau"],
+                    ["#9333ea", "Ungu"],
+                    ["#c026d3", "Mawar"],
                   ].map(([c, label]) => (
                     <button
                       key={c}
@@ -407,11 +407,11 @@ function ResultPanel({ result }: { result: GradingResult }) {
     result.grade === "A"
       ? "var(--success)"
       : result.grade === "B"
-      ? "var(--teal-500)"
+      ? "var(--info)"
       : result.grade === "C"
       ? "var(--accent)"
       : result.grade.startsWith("D")
-      ? "var(--ember-500)"
+      ? "var(--pending)"
       : "var(--danger)";
 
   return (
@@ -425,7 +425,7 @@ function ResultPanel({ result }: { result: GradingResult }) {
             {result.grade}
           </span>
           <div>
-            <p className="font-display text-3xl">{result.total_score.toFixed(0)}</p>
+            <p className="text-3xl font-bold">{result.total_score.toFixed(0)}</p>
             <p className="text-sm text-[var(--text-muted)]">{result.grade_label}</p>
           </div>
         </div>

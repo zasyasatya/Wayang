@@ -1,26 +1,7 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
+import "@fontsource-variable/inter";
 import "./globals.css";
-import { SiteHeader } from "@/components/SiteHeader";
-import { SiteFooter } from "@/components/SiteFooter";
-
-// Font lokal (self-hosted) agar build & runtime tidak bergantung pada CDN online.
-const jakarta = localFont({
-  src: [
-    { path: "../public/fonts/PlusJakartaSans-Regular.ttf", weight: "400", style: "normal" },
-    { path: "../public/fonts/PlusJakartaSans-Bold.ttf", weight: "700", style: "normal" },
-  ],
-  variable: "--font-sans",
-  display: "swap",
-});
-
-const marcellus = localFont({
-  src: [
-    { path: "../public/fonts/Marcellus.ttf", weight: "400", style: "normal" },
-  ],
-  variable: "--font-display",
-  display: "swap",
-});
+import { AppShell } from "@/components/AppShell";
 
 export const metadata: Metadata = {
   title: {
@@ -50,11 +31,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="id" className={`${jakarta.variable} ${marcellus.variable}`}>
-      <body className="min-h-screen">
-        <SiteHeader />
-        <main>{children}</main>
-        <SiteFooter />
+    <html lang="id">
+      <body>
+        <AppShell>{children}</AppShell>
       </body>
     </html>
   );

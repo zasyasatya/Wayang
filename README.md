@@ -2,7 +2,9 @@
 
 > Platform pembelajaran budaya **wayang Bali** untuk semua orang. Kenali **jenis-jenis wayang**, **tokoh yang berperan**, pelajari **sejarahnya**, lalu **berlatih menggambar pola & siluet** yang dinilai otomatis. Dibangun dengan **FastAPI** (backend) dan **Next.js** (frontend).
 
-![stack](https://img.shields.io/badge/Backend-FastAPI-0b8a5a) ![stack](https://img.shields.io/badge/Frontend-Next.js-black) ![stack](https://img.shields.io/badge/CSS-Tailwind%204-06b6d4) ![build](https://img.shields.io/badge/Test-24%20passed-success)
+![stack](https://img.shields.io/badge/Backend-FastAPI-0b8a5a) ![stack](https://img.shields.io/badge/Frontend-Next.js-black) ![stack](https://img.shields.io/badge/CSS-Tailwind%204-06b6d4) ![build](https://img.shields.io/badge/Test-24%20passed-success) ![theme](https://img.shields.io/badge/Design-Mondays%20dashboard-2563eb)
+
+> **Desain** mengikuti referensi **"Mondays"** dashboard (bersih, terang, aksen biru, badge status berwarna, sidebar putih + topbar pencarian). Token warna terpusat di `frontend/app/globals.css`.
 
 ---
 
