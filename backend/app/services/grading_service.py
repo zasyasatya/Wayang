@@ -293,14 +293,14 @@ def _build_feedback(
     elif merit >= 0.5:
         feedback.append("Bentuk garis sudah mendekati, coba telusuri lagi garis luar siluet dengan lebih rapi.")
     else:
-        feedback.append("Garis mulai menyimpang dari kontur. Gunakan mode 'Siluet Bantuan' untuk menelusuri sisi luar dulu.")
+        feedback.append("Garis mulai menyimpang dari kontur. Nyalakan mode Konstruksi atau bandingkan dengan lembar acuan di kiri.")
 
     if coverage >= 0.75:
         feedback.append("Anda berhasil mengikuti hampir seluruh kontur siluet. Bagus!.")
     elif coverage >= 0.5:
         feedback.append("Sebagian kontur sudah tergambar; lengkapi bagian kepala dan badan hingga tertutup.")
     else:
-        feedback.append("Masih ada banyak bagian kontur yang belum digambar. Fokus pada keseluruhan bentuk, bukan satu bagian saja.")
+        feedback.append("Masih ada banyak bagian kontur yang belum digambar. Selesaikan blocking, lalu telusuri garis luar dari mahkota ke kaki.")
 
     if avg_dist_ink < 12:
         feedback.append("Rata-rata jarak garis ke siluet tipis (presisi tinggi).")

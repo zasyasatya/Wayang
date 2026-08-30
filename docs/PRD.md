@@ -36,10 +36,11 @@ Memberikan pengalaman belajar budaya wayang Bali yang **mudah, terstruktur, dan 
 2. **Modul Jenis Wayang** — daftar + detail berbagai jenis wayang Bali dengan sumber.
 3. **Modul Tokoh** — profil tokoh, filter peran, wanda & watak, dengan tautan menggambar.
 4. **Modul Sejarah** — artikel sejarah & filosofi dengan sumber.
-5. **Modul Belajar Menggambar**:
-   - Pilih siluet tokoh.
-   - Kanvas gambar interaktif (pensil, penghapus, ketebalan, warna, garis panduan).
-   - **Penilaian otomatis** dari gambar pengguna terhadap siluet referensi.
+5. **Modul Belajar Menggambar (Studio Atelir)**:
+   - Lembar acuan profil wayang di kiri, kanvas seukuran di kanan (sight-size).
+   - Tujuh langkah standar seni rupa: observasi, proporsi nawa sanga, blocking-in, kontur, landmark, detail, perhalusan.
+   - Tiga mode acuan: observasi murni, konstruksi (garis bantu sama), jiplak pemula.
+   - Dua lapisan (pensil konstruksi + tinta); penilaian otomatis pada kontur tinta.
    - Umpan balik & nilai (skor, huruf, dimensi).
 6. **Dokumentasi** — panduan penggunaan, API reference, design system, PRD, SDLC.
 7. **Satu file `run.py`** untuk menjalankan backend+frontend sekaligus dengan cek env & instalasi.
@@ -116,7 +117,7 @@ Bobot default: `merit_w=0.55`, `coverage_w=0.45`, toleransi `0.03 × kanvas`. Da
 2. **M2** — Halaman Jenis Wayang menampilkan ≥ 10 jenis, tiap detail punya ≥ 1 sumber.
 3. **M3** — Halaman Tokoh dapat difilter per peran dan menampilkan ≥ 15 tokoh.
 4. **M4** — Modul Sejarah menampilkan ≥ 5 artikel dengan sumber.
-5. **M5** — Kanvas menggambar mendukung pensil/penghapus, ketebalan, warna, garis panduan.
+5. **M5** — Studio atelir menampilkan lembar acuan + kanvas seukuran, tujuh langkah konstruksi, pensil/tinta/penghapus, dan garis bantu yang diturunkan dari acuan.
 6. **M6** — Menilai gambar mengembalikan skor + huruf + dimensi + umpan balik; gambar kosong memberikan pesan ramah.
 7. **M7** — `run.py` dapat menyalakan backend & frontend sekaligus dengan cek env & instalasi otomatis.
 8. **M8** — Build frontend (`npm run build`) sukses; backend lulus ≥ 20 test.

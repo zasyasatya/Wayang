@@ -26,3 +26,6 @@ frontend/.installed
 # OS
 .DS_Store
 Thumbs.db
+
+# Preview lokal generator siluet
+.preview/

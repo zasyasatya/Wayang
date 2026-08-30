@@ -79,8 +79,10 @@ Detail satu pelajaran.
 Daftar siluet untuk latihan.
 
 ```json
-{ "items": [{ "id": "arjuna", "slug": "arjuna", "name": "Arjuna", "character_id": "arjuna", "difficulty": "mudah", "description": "...", "tips": ["..."], "ref_points": [[110,6], ...] }], "total": 6 }
+{ "items": [{ "id": "arjuna", "slug": "arjuna", "name": "Arjuna", "character_id": "arjuna", "difficulty": "mudah", "wanda": "alus", "description": "...", "tips": ["..."], "ref_points": [[126,8], ...], "construction": { "view": [220, 340], "axis": {}, "gesture": [], "proportion_lines": [], "blocks": [], "landmarks": [] } }], "total": 6 }
 ```
+
+`construction` dipakai studio atelir untuk garis gestur, nawa sanga, blocking, dan landmark yang **diturunkan dari lembar acuan** (bukan overlay generik).
 
 ### `GET /api/silhouettes/{id}/image`
 Mengembalikan **SVG** siluet (`image/svg+xml`). Contoh: `/api/silhouettes/arjuna/image`.

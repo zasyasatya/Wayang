@@ -110,8 +110,9 @@ Dipakai secara terukur (skala 4px).
 ### Stat chips
 - Kartu kecil dengan ikon berwarna + nilai besar + label (contoh: 13 Jenis Wayang).
 
-### Canvas gambar (`.canvas-board`)
-- Panel kanvas dengan latar lembut, mendukung pointer (mouse/touch/stylus).
+### Canvas gambar (`.canvas-board`, `.canvas-frame`, `.studio-plate`)
+- Panel kanvas dengan latar kertas atelir (`#f4e6c8`), mendukung pointer (mouse/touch/stylus).
+- Studio atelir: lembar acuan dan kanvas **seukuran** (aspect 220/340), overlay konstruksi SVG, rel 7 langkah (`.studio-step-rail`).
 
 ---
 
