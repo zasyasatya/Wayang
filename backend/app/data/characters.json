@@ -1,0 +1,312 @@
+[
+  {
+    "id": "c1",
+    "slug": "rama",
+    "name": "Rama",
+    "wikipedia_name": "Rama",
+    "role": "Satria",
+    "wanda": "Alus",
+    "type": "Tokoh utama & titisan Wisnu",
+    "summary": "Pangeran Ayodhya dan titisan Dewa Wisnu yang menegakkan dharma.",
+    "description": "Rama (Ramawijaya) adalah putra Prabu Dasarata dari Ayodhya dan dianggap sebagai titisan Dewa Wisnu. Ia menjadi tokoh sentral Ramayana, berjuang menyelamatkan istrinya Sita dari Rahwana. Dalam pewayangan Bali, Rama digambarkan berwanda alus: wajah halus, berwibawa, dan tenang, mewakili nilai kesabaran, keberanian, dan pengabdian pada dharma.",
+    "traits": ["Bijaksana", "Berani", "Setia", "Menegakkan dharma", "Tenang"],
+    "origin": {"epic": "Ramayana", "side": "Satria / Pendharma"},
+    "related_stories": ["Rama's liberation of Sita", "Peperangan Alengka"],
+    "sources": [
+      {"title": "Wayang — World Encyclopedia of Puppetry Arts (UNIMA)", "url": "https://wepa.unima.org/en/wayang/"}
+    ]
+  },
+  {
+    "id": "c2",
+    "slug": "sita",
+    "name": "Sita",
+    "wikipedia_name": "Sita",
+    "role": "Satria",
+    "wanda": "Putri",
+    "type": "Istri Rama",
+    "summary": "Permaisuri Rama yang setia dan menjadi simbol kesucian.",
+    "description": "Sita (Sinta) adalah permata Ayodhya dan istri setia Rama. Dalam pewayangan, ia digambarkan dengan wanda putri — halus, lembut, berwajah putih. Penculikannya oleh Rahwana memicu perang besar Ramayana. Sita melambangkan kesetiaan, kesucian, dan keteguhan menghadapi cobaan.",
+    "traits": ["Setia", "Lembut", "Suci", "Tabah"],
+    "origin": {"epic": "Ramayana", "side": "Satria"},
+    "related_stories": ["Penculikan Sita", "Api penyucian"],
+    "sources": [
+      {"title": "Wayang — World Encyclopedia of Puppetry Arts (UNIMA)", "url": "https://wepa.unima.org/en/wayang/"}
+    ]
+  },
+  {
+    "id": "c3",
+    "slug": "arjuna",
+    "name": "Arjuna (Janaka)",
+    "wikipedia_name": "Arjuna",
+    "role": "Satria",
+    "wanda": "Alus",
+    "type": "Pandawa",
+    "summary": "Kesatria Pandawa yang tampan, sakti, dan menjadi tokoh favorit.",
+    "description": "Arjuna (Janaka, Permadi) adalah putra Prabu Pandu dan dewi Kunti, penggambaran kesatria halus yang paling dikenal dalam pewayangan Bali. Dengan wanda alus, ia tampan, bijak, dan memiliki banyak kesaktian. Arjuna adalah tokoh yang sering menjadi panutan kehormatan, kebijaksanaan, dan kecakapan dalam peperangan.",
+    "traits": ["Tampan", "Sakti", "Bijaksana", "Berwatak halus (alus)"],
+    "origin": {"epic": "Mahabharata", "side": "Pandawa"},
+    "related_stories": ["Arjunawiwaha", "Bharatayudha"],
+    "sources": [
+      {"title": "Wayang — World Encyclopedia of Puppetry Arts (UNIMA)", "url": "https://wepa.unima.org/en/wayang/"}
+    ]
+  },
+  {
+    "id": "c4",
+    "slug": "bima",
+    "name": "Bima (Werkudara)",
+    "wikipedia_name": "Bima",
+    "role": "Satria",
+    "wanda": "Gagah",
+    "type": "Pandawa",
+    "summary": "Kesatria Pandawa kedua yang kuat, jujur, dan berwanda gagah.",
+    "description": "Bima (Werkudara, Bayusuta) adalah putra kedua Pandawa, digambarkan besar, kuat, dan berwajah gagah. Ia terkenal jujur, tidak kenal kompromi dengan kejahatan, dan sangat setia kepada keluarga. Kisahnya dalam 'Bhima Swarga' sangat populer di Bali dan sering dipentaskan dalam upacara yadnya. Bima melambangkan kekuatan, kejujuran, dan pengabdian.",
+    "traits": ["Kuat", "Jujur", "Setia", "Tegas", "Berani"],
+    "origin": {"epic": "Mahabharata", "side": "Pandawa"},
+    "related_stories": ["Bhima Swarga", "Bharatayudha", "Percobaan Pandawa"],
+    "sources": [
+      {"title": "Fungsi Seni Pertunjukan Wayang Kulit Bali Lakon Bhima Swarga dalam Upacara Yadnya — Jurnal Penelitian Agama Hindu (Jayapangus, terakreditasi)", "url": "https://www.academia.edu/71848754/Fungsi_Seni_Pertunjukan_Wayang_Kulit_Bali_Lakon_Bhima_Swarga_dalam_Upacara_Yadnya"},
+      {"title": "Wayang — World Encyclopedia of Puppetry Arts (UNIMA)", "url": "https://wepa.unima.org/en/wayang/"}
+    ]
+  },
+  {
+    "id": "c5",
+    "slug": "gatotkaca",
+    "name": "Gatotkaca (Ghatotkaca)",
+    "wikipedia_name": "Ghatotkacha",
+    "role": "Satria",
+    "wanda": "Gagah",
+    "type": "Kesatria raksasa (Pandawa)",
+    "summary": "Putra Bima yang sakti, berwatak gagah, dan gagah perkasa.",
+    "description": "Gatotkaca adalah putra Bima dan Dewi Hidimbi, berwanda gagah/raksasa. Ia sangat sakti dan gagah perkasa, dikenal karena kebijaksanaan, kecerdasan, dan kesetiaannya. Dalam Bharatayudha ia gugur dengan gagah berani. Tokoh ini melambangkan keberanian dengan kebijaksanaan dan pengorbanan.",
+    "traits": ["Sakti", "Gagah", "Berani", "Setia", "Cerdik"],
+    "origin": {"epic": "Mahabharata", "side": "Pandawa"},
+    "related_stories": ["Gugurnya Gatotkaca", "Bharatayudha"],
+    "sources": [
+      {"title": "Wayang — World Encyclopedia of Puppetry Arts (UNIMA)", "url": "https://wepa.unima.org/en/wayang/"}
+    ]
+  },
+  {
+    "id": "c6",
+    "slug": "kresna",
+    "name": "Kresna (Krishna)",
+    "wikipedia_name": "Krishna",
+    "role": "Satria",
+    "wanda": "Alus",
+    "type": "Penasehat Pandawa",
+    "summary": "Penasehat Pandawa yang bijaksana, titisan Wisnu, dan berwanda alus.",
+    "description": "Kresna adalah titisan Dewa Wisnu dan menjadi penasehat utama Pandawa. Berwanda alus, ia tampak tenang, bijaksana, dan berwibawa. Kresna berperan penting dalam tipu daya dan strategi Bharatayudha. Ia melambangkan kecerdasan, diplomasi, dan jalan kebenaran.",
+    "traits": ["Bijaksana", "Sakti", "Cerdik", "Tenang", "Strategis"],
+    "origin": {"epic": "Mahabharata", "side": "Pandawa"},
+    "related_stories": ["Bharatayudha", "Asta Dasa Parwa"],
+    "sources": [
+      {"title": "Wayang — World Encyclopedia of Puppetry Arts (UNIMA)", "url": "https://wepa.unima.org/en/wayang/"}
+    ]
+  },
+  {
+    "id": "c7",
+    "slug": "hanoman",
+    "name": "Hanoman",
+    "wikipedia_name": "Hanuman",
+    "role": "Satria",
+    "wanda": "Gagah",
+    "type": "Kesatria kera",
+    "summary": "Kesatria kera sakti yang setia kepada Rama.",
+    "description": "Hanoman adalah kesatria berkepala kera yang sakti dan setia kepada Rama, membantu membebaskan Sita dari Alengka. Digambarkan dengan wanda gagah/kambeng dengklik, ia gesit, kuat, dan cerdik. Hanoman melambangkan kesetiaan, kekuatan, dan pengetahuan.",
+    "traits": ["Sakti", "Setia", "Cerdik", "Gesit", "Kuat"],
+    "origin": {"epic": "Ramayana", "side": "Satria / Rama"},
+    "related_stories": ["Pembakaran Alengka", "Perang Ramayana"],
+    "sources": [
+      {"title": "Wayang wong — Wikipedia", "url": "https://en.wikipedia.org/wiki/Wayang_wong"},
+      {"title": "Wayang — World Encyclopedia of Puppetry Arts (UNIMA)", "url": "https://wepa.unima.org/en/wayang/"}
+    ]
+  },
+  {
+    "id": "c8",
+    "slug": "rahwana",
+    "name": "Rahwana (Rawana)",
+    "wikipedia_name": "Ravana",
+    "role": "Raksasa",
+    "wanda": "Denawa",
+    "type": "Antagonis Ramayana",
+    "summary": "Raja raksasa Alengka yang menculik Sita.",
+    "description": "Rahwana adalah raja raksasa dari Alengka, berwanda denawa yang gagah, besar, dan terkesan angker. Ia menculik Sita dan menjadi antagonis utama Ramayana. Meski sakti dan cerdik, keserakahannya membuatnya akhirnya kalah melawan Rama. Rahwana melambangkan kesaktian yang disalahgunakan dan keangkuhan.",
+    "traits": ["Sakti", "Angkuh", "Serakah", "Gagah", "Cerdik"],
+    "origin": {"epic": "Ramayana", "side": "Raksasa"},
+    "related_stories": ["Peperangan Alengka", "Penculikan Sita"],
+    "sources": [
+      {"title": "Wayang — World Encyclopedia of Puppetry Arts (UNIMA)", "url": "https://wepa.unima.org/en/wayang/"}
+    ]
+  },
+  {
+    "id": "c9",
+    "slug": "sumbadra",
+    "name": "Sumbadra (Subhadra)",
+    "wikipedia_name": "Subhadra",
+    "role": "Satria",
+    "wanda": "Putri",
+    "type": "Istri Arjuna",
+    "summary": "Permaisuri Arjuna yang halus dan setia.",
+    "description": "Sumbadra adalah permaisuri Arjuna dan ibu Abimanyu. Berwanda putri, ia digambarkan halus, lembut, dan berwajah putih. Tokoh ini melambangkan kasih sayang, kesetiaan, dan keibuan dalam pewayangan.",
+    "traits": ["Lembut", "Setia", "Penyayang", "Halus"],
+    "origin": {"epic": "Mahabharata", "side": "Pandawa"},
+    "related_stories": ["Lahirnya Abimanyu"],
+    "sources": [
+      {"title": "Wayang — World Encyclopedia of Puppetry Arts (UNIMA)", "url": "https://wepa.unima.org/en/wayang/"}
+    ]
+  },
+  {
+    "id": "c10",
+    "slug": "abimanyu",
+    "name": "Abimanyu",
+    "wikipedia_name": "Abhimanyu",
+    "role": "Satria",
+    "wanda": "Alus",
+    "type": "Putra Arjuna",
+    "summary": "Kesatria muda Pandawa yang gigih dan gagah berani.",
+    "description": "Abimanyu adalah putra Arjuna dan Sumbadra, seorang kesatria muda yang gagah berani. Ia gugur dengan heroik dalam Bharatayudha saat menerobos formasi Cakrawiyuha. Tokoh ini melambangkan keberanian muda dan pengorbanan demi kebenaran.",
+    "traits": ["Gagah berani", "Gigih", "Muda", "Setia", "Bersemangat"],
+    "origin": {"epic": "Mahabharata", "side": "Pandawa"},
+    "related_stories": ["Gugurnya Abimanyu", "Bharatayudha"],
+    "sources": [
+      {"title": "Wayang — World Encyclopedia of Puppetry Arts (UNIMA)", "url": "https://wepa.unima.org/en/wayang/"}
+    ]
+  },
+  {
+    "id": "c11",
+    "slug": "tualen",
+    "name": "Tualen (Twalen)",
+    "wikipedia_name": "Twalen",
+    "role": "Panasar",
+    "wanda": "Panasar",
+    "type": "Pengasuh satria (punakawan Bali)",
+    "summary": "Punakawan Bali yang mengasuh para kesatria, berperan sebagai penerjemah dan pelawak.",
+    "description": "Tualen adalah punakawan (panasar) dalam pewayangan Bali yang mengasuh para kesatria. Ia setara dengan Semar dalam wayang Jawa. Meski berstatus pelayan, Tualen berasal dari kedudukan dewa yang turun ke bumi, sehingga ia sangat bijak dan menjadi penggambaran 'manusia kecil' yang mengomentari jalannya cerita untuk penonton. Tualen sering berperan menerjemahkan bahasa Kawi para bangsawan ke dalam Bali sehari-hari.",
+    "traits": ["Bijak", "Lucu", "Setia", "Rendah hati", "Berpengalaman"],
+    "origin": {"epic": "Mahabharata & Ramayana", "side": "Punakawan (pengasuh satria)"},
+    "related_stories": ["Berbagai lakon Parwa"],
+    "sources": [
+      {"title": "PUNAKAWAN TUALEN — Blog ISI Denpasar", "url": "https://blog.isi-dps.ac.id/punakawan-tualen-asal-usul-dan-peranannya-dalam-pewayangan/"},
+      {"title": "Wayang — World Encyclopedia of Puppetry Arts (UNIMA)", "url": "https://wepa.unima.org/en/wayang/"}
+    ]
+  },
+  {
+    "id": "c12",
+    "slug": "merdah",
+    "name": "Merdah",
+    "wikipedia_name": "Merdah",
+    "role": "Panasar",
+    "wanda": "Panasar",
+    "type": "Pengasuh satria (punakawan Bali)",
+    "summary": "Putra Tualen yang ikut mengasuh para kesatria.",
+    "description": "Merdah adalah putra Tualen yang bersama ayahnya mengasuh para kesatria dalam pewayangan Bali. Ia menjadi pelawak yang cerdik dan setia, membantu menerangkan jalannya cerita kepada penonton. Bersama Tualen, Merdah membentuk pasangan panasar penuh humor dan kearifan lokal.",
+    "traits": ["Cerdik", "Lucu", "Setia", "Supel"],
+    "origin": {"epic": "Mahabharata & Ramayana", "side": "Punakawan (pengasuh satria)"},
+    "related_stories": ["Berbagai lakon Parwa"],
+    "sources": [
+      {"title": "PUNAKAWAN TUALEN — Blog ISI Denpasar", "url": "https://blog.isi-dps.ac.id/punakawan-tualen-asal-usul-dan-peranannya-dalam-pewayangan/"}
+    ]
+  },
+  {
+    "id": "c13",
+    "slug": "delem",
+    "name": "Delem",
+    "wikipedia_name": "Delem",
+    "role": "Panasar",
+    "wanda": "Panasar",
+    "type": "Pengasuh raksasa (punakawan Bali)",
+    "summary": "Punakawan Bali yang mengasuh golongan raksasa.",
+    "description": "Delem adalah panasar yang mengasuh golongan raksasa dan Kurawa dalam pewayangan Bali. Ia biasa digambarkan gemuk, pembual, dan sering menjadi sasaran kelucuan. Kehadirannya memberikan keseimbangan humor sekaligus kritik sosial terhadap sifat angkuh para raksasa.",
+    "traits": ["Lucu", "Pembual", "Gemuk", "Satir"],
+    "origin": {"epic": "Mahabharata & Ramayana", "side": "Punakawan (pengasuh raksasa)"},
+    "related_stories": ["Berbagai lakon Parwa & Ramayana"],
+    "sources": [
+      {"title": "PUNAKAWAN TUALEN — Blog ISI Denpasar", "url": "https://blog.isi-dps.ac.id/punakawan-tualen-asal-usul-dan-peranannya-dalam-pewayangan/"}
+    ]
+  },
+  {
+    "id": "c14",
+    "slug": "sangut",
+    "name": "Sangut",
+    "wikipedia_name": "Sangut",
+    "role": "Panasar",
+    "wanda": "Panasar",
+    "type": "Pengasuh raksasa (punakawan Bali)",
+    "summary": "Pasangan Delem yang mengasuh golongan raksasa.",
+    "description": "Sangut adalah pasangan Delem sebagai panasar pengasuh golongan raksasa. Bersama Delem, ia menghadirkan humor dan kritik sosial dalam pewayangan Bali. Meski terlihat sederhana, Sangut dan Delem menyimpan kearifan yang menghibur sekaligus mendidik penonton.",
+    "traits": ["Lucu", "Satir", "Cerdik", "Humoris"],
+    "origin": {"epic": "Mahabharata & Ramayana", "side": "Punakawan (pengasuh raksasa)"},
+    "related_stories": ["Berbagai lakon Parwa & Ramayana"],
+    "sources": [
+      {"title": "PUNAKAWAN TUALEN — Blog ISI Denpasar", "url": "https://blog.isi-dps.ac.id/punakawan-tualen-asal-usul-dan-peranannya-dalam-pewayangan/"}
+    ]
+  },
+  {
+    "id": "c15",
+    "slug": "duryodana",
+    "name": "Duryodana (Duryodhana)",
+    "wikipedia_name": "Duryodhana",
+    "role": "Raksasa",
+    "wanda": "Gagah",
+    "type": "Antagonis Mahabharata (Kurawa)",
+    "summary": "Pemimpin Kurawa yang tamak dan berseteru dengan Pandawa.",
+    "description": "Duryodana adalah putra tertua Destarasta dan menjadi pemimpin Kurawa. Berwanda gagah, ia digambarkan kuat namun tamak dan iri pada Pandawa. Perseteruannya dengan Pandawa menjadi pemicu perang besar Bharatayudha. Tokoh ini melambangkan keangkuhan dan sifat ingin menang sendiri yang berakhir dengan kehancuran.",
+    "traits": ["Tamak", "Iri", "Kuat", "Angkuh", "Tegas"],
+    "origin": {"epic": "Mahabharata", "side": "Kurawa"},
+    "related_stories": ["Bharatayudha", "Permainan dadu"],
+    "sources": [
+      {"title": "Wayang — World Encyclopedia of Puppetry Arts (UNIMA)", "url": "https://wepa.unima.org/en/wayang/"}
+    ]
+  },
+  {
+    "id": "c16",
+    "slug": "srikandi",
+    "name": "Srikandi (Sikandi)",
+    "wikipedia_name": "Shikhandi",
+    "role": "Satria",
+    "wanda": "Gagah",
+    "type": "Kesatria perempuan Pandawa",
+    "summary": "Kesatria perempuan dari Pandawa yang berwanda gagah.",
+    "description": "Srikandi adalah kesatria perempuan yang berperan penting dalam Bharatayudha, membalaskan dendam terhadap Bisma. Berwanda gagah, ia digambarkan berani dan tegas, menonjol di antara tokoh perempuan pewayangan. Srikandi melambangkan keberanian dan kesetaraan dalam perjuangan.",
+    "traits": ["Berani", "Tegas", "Setia", "Gigih"],
+    "origin": {"epic": "Mahabharata", "side": "Pandawa"},
+    "related_stories": ["Bharatayudha", "Gugurnya Bisma"],
+    "sources": [
+      {"title": "Wayang — World Encyclopedia of Puppetry Arts (UNIMA)", "url": "https://wepa.unima.org/en/wayang/"},
+      {"title": "SENI PERTUNJUKAN WAYANG", "url": "https://ilmiyahhkarim.wordpress.com/2012/11/20/seni-pertunjukan-wayang/"}
+    ]
+  },
+  {
+    "id": "c17",
+    "slug": "betara-guru",
+    "name": "Betara Guru (Siwa)",
+    "wikipedia_name": "Shiva",
+    "role": "Dewa",
+    "wanda": "Alus",
+    "type": "Dewa tertinggi",
+    "summary": "Dewa tertinggi dan guru para dewa dalam pewayangan.",
+    "description": "Betara Guru adalah manifestasi Dewa Siwa dan dianggap sebagai guru para dewa serta sumber pengetahuan dalam pewayangan. Berwanda alus, ia digambarkan tenang, agung, dan berwibawa, sering menjadi penengah dan pemberi ketetapan dalam kisah para tokoh.",
+    "traits": ["Agung", "Bijaksana", "Sakti", "Tenang"],
+    "origin": {"epic": "Hindu", "side": "Dewa"},
+    "related_stories": ["Berbagai lakon Parwa"],
+    "sources": [
+      {"title": "Wayang — World Encyclopedia of Puppetry Arts (UNIMA)", "url": "https://wepa.unima.org/en/wayang/"}
+    ]
+  },
+  {
+    "id": "c18",
+    "slug": "kalantaka",
+    "name": "Kalantaka",
+    "wikipedia_name": "Kalantaka",
+    "role": "Raksasa",
+    "wanda": "Denawa",
+    "type": "Raksasa / Denawa",
+    "summary": "Raksasa penjelmaan Kala yang mengancam keharmonisan.",
+    "description": "Kalantaka adalah sosok raksasa yang muncul dalam lakon-lakon pewayangan Bali, sering menjadi penjelmaan Kala (Siwa-Kala) yang menimbulkan gangguan. Berwanda denawa, ia digambarkan membesar, angker, dan menakutkan, mewakili sisi gelap kehidupan yang harus ditaklukkan.",
+    "traits": ["Menakutkan", "Gagah", "Angker", "Kuat"],
+    "origin": {"epic": "Hindu", "side": "Raksasa / Denawa"},
+    "related_stories": ["Berbagai lakon ritual"],
+    "sources": [
+      {"title": "Wayang — World Encyclopedia of Puppetry Arts (UNIMA)", "url": "https://wepa.unima.org/en/wayang/"}
+    ]
+  }
+]

@@ -1,0 +1,27 @@
+[project]
+name = "wayang-bali-api"
+version = "1.0.0"
+description = "Backend API untuk platform pembelajaran wayang Bali."
+requires-python = ">=3.10"
+dependencies = [
+    "fastapi==0.141.1",
+    "uvicorn[standard]==0.52.4",
+    "pydantic==2.12.4",
+    "python-dotenv==1.1.1",
+    "numpy==2.4.6",
+    "scipy==1.17.1",
+    "pillow==12.3.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest==8.4.2",
+    "httpx==0.28.1",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100

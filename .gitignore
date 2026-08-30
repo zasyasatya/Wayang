@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Node / Next
+node_modules/
+.next/
+out/
+*.tsbuildinfo
+.env*
+!.env.local.example
+
+# Logs & aset runtime / marker
+*.log
+backend/run.backend.log
+frontend/run.frontend.log
+backend/.installed
+frontend/.installed
+
+# OS
+.DS_Store
+Thumbs.db

@@ -1,0 +1,328 @@
+[
+  {
+    "id": "m1",
+    "slug": "wayang-parwa",
+    "name": "Wayang Parwa",
+    "category": "jenis-wayang",
+    "summary": "Pertunjukan wayang kulit paling populer di Bali yang bersumber dari wiracarita Mahabharata.",
+    "description": "Wayang Parwa merupakan pertunjukan wayang kulit paling terkenal di seluruh Pulau Dewata. Sesuai namanya, lakonnya bersumber dari Astadasa Parwa — 18 kitab wiracarita Mahabharata. Karena itu pula wayang ini sering disebut 'Astha Dasa Parwa'. Biasanya dipentaskan pada malam hari sebagai hiburan, namun ada juga ragam siang hari yang bersifat spiritual untuk upacara agama seperti Wayang Sapuh Leger dan Wayang Sudamala. Durasi pementasan umumnya 3–4 jam dengan tampilan boneka kulit berukuran sekitar 30–50 cm.",
+    "key_points": [
+      "Sumber lakon: Mahabharata (Astadasa Parwa).",
+      "Paling populer dan paling sering dipentaskan di Bali.",
+      "Dipentaskan malam hari (hiburan) atau siang hari (ritual).",
+      "Diiringi empat buah gender wayang dan ditatah oleh satu dalang.",
+      "Durasi standar 3 hingga 4 jam."
+    ],
+    "details": {
+      "sumber_lakon": "Mahabharata (Astadasa Parwa)",
+      "waktu_pementasan": "Malam hari (hiburan) / siang hari (ritual: Sapuh Leger & Sudamala)",
+      "ukuran_boneka": "± 30–50 cm",
+      "musik_pengiring": "Gender wayang (4 instrumen)",
+      "bahasa": "Kawi (tokoh bangsawan) diterjemahkan ke Bahasa Bali oleh panasar",
+      "pemain": "Dalang, 2 pembantu (tututan), 4 penabuh gender"
+    },
+    "sources": [
+      {"title": "Wayang kulit Bali — Wikipedia", "url": "https://id.wikipedia.org/wiki/Wayang_kulit_Bali"},
+      {"title": "Wayang — World Encyclopedia of Puppetry Arts (UNIMA)", "url": "https://wepa.unima.org/en/wayang/"}
+    ],
+    "images": []
+  },
+  {
+    "id": "m2",
+    "slug": "wayang-ramayana",
+    "name": "Wayang Ramayana",
+    "category": "jenis-wayang",
+    "summary": "Wayang yang membawakan kisah Ramayana, sering disebut 'wayang ngrameyana' di Bali.",
+    "description": "Wayang Ramayana membawakan tokoh serta alur dari kakawin/epos Ramayana, terutama kisah Rama yang menyelamatkan Sita dari Rahwana. Di Bali, wayang ini juga dikenal dengan sebutan 'wayang ngrameyana'. Pementasannya umumnya bermotif hiburan dan digelar pada malam hari dengan sarana lengkap seperti layar, panggung, dan penerangan. Karena banyak adegan peperangan, hingga kini iringan perkutut gender sering ditambah kendang dan alat perkusi lainnya.",
+    "key_points": [
+      "Sumber lakon: sastra Ramayana (kakawin Ramayana).",
+      "Disebut juga wayang ngrameyana di Bali.",
+      "Motif hiburan, dipentaskan pada malam hari.",
+      "Iringan dilengkapi kendang untuk adegan perang.",
+      "Durasi pementasan biasanya 3–4 jam."
+    ],
+    "details": {
+      "sumber_lakon": "Kakawin Ramayana",
+      "waktu_pementasan": "Malam hari",
+      "musik_pengiring": "Gender wayang + kendang, cengceng, kelenang, kajar, kempur",
+      "tokoh_utama": "Rama, Sita, Rahwana, Hanoman, Laksmana",
+      "motif": "Hiburan dan pelestarian budaya"
+    },
+    "sources": [
+      {"title": "Wayang kulit Bali — Wikipedia", "url": "https://id.wikipedia.org/wiki/Wayang_kulit_Bali"},
+      {"title": "Sejarah Wayang Kulit Bali — Bali Memo", "url": "https://www.balimemo.com/artikel/138157/Sejarah-Wayang-Kulit-Bali/"}
+    ],
+    "images": []
+  },
+  {
+    "id": "m3",
+    "slug": "wayang-wong",
+    "name": "Wayang Wong (Wayang Orang Bali)",
+    "category": "jenis-wayang",
+    "summary": "Wayang yang diperankan oleh manusia (aktor), bukan boneka kulit — langka dan historis di Bali.",
+    "description": "Wayang wong adalah satu-satunya jenis wayang yang tidak menggunakan boneka: tokoh-tokohnya diperankan langsung oleh aktor manusia dengan tarian dan kostum. Referensi tertulisnya dapat ditelusuri hingga prasasti Jawa Timur (Wimalarama) bertahun 930 M. Di Bali, wayang wong sering dikaitkan dengan daerah Buleleng; versi wayang wong Bali dapat dipentaskan bersama tarian kecak, terutama untuk cuplikan Ramayana. Karena kelangkaannya, wayang ini kini sangat jarang dipentaskan.",
+    "key_points": [
+      "Diperankan aktor manusia, bukan boneka kulit.",
+      "Rujukan tertulis pertama: prasasti Wimalarama (930 M).",
+      "Di Bali umumnya terkait dengan Buleleng dan penampilan Ramayana.",
+      "Bisa disatukan dalam pertunjukan kecak.",
+      "Sangat langka dan sudah jarang dipentaskan."
+    ],
+    "details": {
+      "sumber_lakon": "Ramayana dan Mahabharata",
+      "aktor": "Manusia (penari)",
+      "keterkaitan_daerah": "Buleleng, Bali",
+      "variasi": "Wayang wong Bali (dengan / tanpa kecak)",
+      "status": "Langka"
+    },
+    "sources": [
+      {"title": "Wayang wong — Wikipedia", "url": "https://en.wikipedia.org/wiki/Wayang_wong"},
+      {"title": "Sekilas Tentang Pewayangan di Bali", "url": "https://cakepane.blogspot.com/2015/08/sekilas-tentang-istilah-pewayangan-di.html"}
+    ],
+    "images": []
+  },
+  {
+    "id": "m4",
+    "slug": "wayang-gambuh",
+    "name": "Wayang Gambuh",
+    "category": "jenis-wayang",
+    "summary": "Wayang kulit Bali yang mengisahkan cerita Panji dengan iringan gamelan khas gambuh.",
+    "description": "Wayang Gambuh adalah wayang kulit asli Bali yang langka dan bersumber dari kisah Panji. Iringannya menggunakan gamelan gambuh yang terdiri atas suling besar, kendang, rehab, cengceng, kajar, kelenang, dan kempur. Wayang ini tergolong sangat tua dan jarang dipentaskan, menjadi bagian dari kekayaan pewayangan Bali di samping wayang Parwa.",
+    "key_points": [
+      "Bersumber dari kisah Panji.",
+      "Menggunakan gamelan gambuh yang khas.",
+      "Termasuk jenis wayang langka di Bali.",
+      "Kaya akan unsur sastra dan tari klasik."
+    ],
+    "details": {
+      "sumber_lakon": "Kisah Panji",
+      "gamelan": "Gamelan gambuh (suling besar, kendang, rehab, cengceng, kajar, kelenang, kempur)",
+      "status": "Langka"
+    },
+    "sources": [
+      {"title": "Wayang kulit Bali — Wikipedia", "url": "https://id.wikipedia.org/wiki/Wayang_kulit_Bali"},
+      {"title": "Sekilas Tentang Pewayangan di Bali", "url": "https://cakepane.blogspot.com/2015/08/sekilas-tentang-istilah-pewayangan-di.html"}
+    ],
+    "images": []
+  },
+  {
+    "id": "m5",
+    "slug": "wayang-calonarang",
+    "name": "Wayang Calonarang",
+    "category": "jenis-wayang",
+    "summary": "Wayang yang menceritakan kisah Calonarang, ratu sihir dari Dirah, dengan tema spiritual dan magis.",
+    "description": "Wayang Calonarang mengisahkan tokoh Calonarang, seorang janda sakti dari Dirah, yang berkonflik dengan Kerajaan Daha. Lakon ini sarat tema spiritual, magis, dan mengandung nilai-nilai ketegangan antara dharma dan adharma. Pertunjukannya umumnya dilakukan untuk keperluan upacara pembersihan (tawur) dan penguat spiiritual, sehingga memiliki nuansa sakral.",
+    "key_points": [
+      "Tokoh utama: Calonarang dari Dirah.",
+      "Bertemakan spiritual dan magis.",
+      "Sering dipentaskan untuk upacara pembersihan (tawur).",
+      "Kaya simbolisme dharma vs adharma."
+    ],
+    "details": {
+      "sumber_lakon": "Cerita Calonarang",
+      "tokoh_utama": "Calonarang, Ratu Galuh",
+      "fungsi": "Ritual, pembersihan, hiburan"
+    },
+    "sources": [
+      {"title": "Wayang kulit Bali — Wikipedia", "url": "https://id.wikipedia.org/wiki/Wayang_kulit_Bali"}
+    ],
+    "images": []
+  },
+  {
+    "id": "m6",
+    "slug": "wayang-cupak",
+    "name": "Wayang Cupak",
+    "category": "jenis-wayang",
+    "summary": "Wayang yang mengisahkan Cupak Grantang, dua putra Bhatara Brahma yang berbeda watak.",
+    "description": "Wayang Cupak, juga disebut Wayang Cupak Grantang, mengisahkan perjalanan hidup dua putra Bhatara Brahma yang sangat berbeda watak: Cupak (serakah, tamak) dan Grantang (baik hati). Tokoh-tokohnya antara lain Men Bekung dan Pan Bekung, raksasa Benaru, Prabu Gobagwesi, serta Galuh Daha. Struktur pementasan tetap mengikuti pola wayang kulit tradisional Bali (wayang Parwa) dan umumnya melibatkan dalang, dua pembantu, serta penabuh gamelan.",
+    "key_points": [
+      "Lakon utama: Cupak dan Grantang.",
+      "Bersumber dari cerita rakyat bernuansa moral.",
+      "Mengikuti struktur pementasan wayang Parwa.",
+      "Tokoh: Men Bekung, Pan Bekung, Raksasa Benaru, Prabu Gobagwesi, Galuh Daha."
+    ],
+    "details": {
+      "sumber_lakon": "Cupak Grantang",
+      "tokoh_utama": "Cupak, Grantang",
+      "struktur": "Mengikuti pola wayang kulit tradisional Bali",
+      "status": "Langka"
+    },
+    "sources": [
+      {"title": "Wayang kulit Bali — Wikipedia", "url": "https://id.wikipedia.org/wiki/Wayang_kulit_Bali"},
+      {"title": "SENI PERTUNJUKAN WAYANG", "url": "https://ilmiyahhkarim.wordpress.com/2012/11/20/seni-pertunjukan-wayang/"}
+    ],
+    "images": []
+  },
+  {
+    "id": "m7",
+    "slug": "wayang-sasak",
+    "name": "Wayang Sasak",
+    "category": "jenis-wayang",
+    "summary": "Wayang berakulturasi Bali–Sasak dari Lombok yang membawakan kisah Islam, seperti perjuangan Amir Hamzah.",
+    "description": "Wayang Sasak tumbuh dan berkembang di daerah Sasak (Lombok, Nusa Tenggara Barat) dan menjadi bukti akulturasi seni budaya Bali dengan Sasak. Lakonnya bertemakan Islam — biasanya menceritakan perjalanan tokoh Amir Hamzah, uyakulub Nabi. Boneka wayang dibuat dari kulit kerbau. Bahasanya memadukan bahasa Kawi, Bali, dan Sasak. Sayangnya, karena semakin sedikitnya dalang dan minimnya dukungan, wayang sasak terancam punah.",
+    "key_points": [
+      "Berasal dari daerah Sasak (Lombok, NTB).",
+      "Boneka terbuat dari kulit kerbau.",
+      "Lakon bertema Islam: perjuangan Amir Hamzah.",
+      "Bahasa campuran Kawi, Bali, dan Sasak.",
+      "Terancam punah karena kurangnya regenerasi dalang."
+    ],
+    "details": {
+      "sumber_lakon": "Hikayat Amir Hamzah",
+      "asal": "Lombok, Nusa Tenggara Barat",
+      "bahan_boneka": "Kulit kerbau",
+      "bahasa": "Kawi, Bali, Sasak",
+      "status": "Terancam punah"
+    },
+    "sources": [
+      {"title": "Wayang kulit Bali — Wikipedia", "url": "https://id.wikipedia.org/wiki/Wayang_kulit_Bali"},
+      {"title": "Mengenal Jenis-jenis Wayang di Indonesia — detikNews", "url": "https://news.detik.com/berita/d-6388268/mengenal-jenis-jenis-wayang-di-indonesia"}
+    ],
+    "images": []
+  },
+  {
+    "id": "m8",
+    "slug": "wayang-arja",
+    "name": "Wayang Arja",
+    "category": "jenis-wayang",
+    "summary": "Wayang yang diciptakan pada 1975, terinspirasi dari seni drama-tari Arja yang sedang terdesak.",
+    "description": "Wayang Arja adalah jenis wayang yang relatif baru, diciptakan pada tahun 1975. Penciptaannya terinspirasi dari kehidupan para pelaku seni pertunjukan Arja yang kala itu mulai terdesak oleh kehadiran drama gong. Dengan boneka kulit, wayang ini membawakan lakon-lakon yang selama ini dikenal dari seni Arja, sehingga menjadi bentuk pelestarian sekaligus inovasi.",
+    "key_points": [
+      "Diciptakan pada tahun 1975.",
+      "Terinspirasi dari drama-tari Arja.",
+      "Bentuk pelestarian seni yang mulai terdesak.",
+      "Menjadi inovasi dalam dunia pewayangan Bali."
+    ],
+    "details": {
+      "tahun_diciptakan": "1975",
+      "inspirasi": "Seni pertunjukan Arja",
+      "status": "Inovasi pewayangan"
+    },
+    "sources": [
+      {"title": "Wayang kulit Bali — Wikipedia", "url": "https://id.wikipedia.org/wiki/Wayang_kulit_Bali"}
+    ],
+    "images": []
+  },
+  {
+    "id": "m9",
+    "slug": "wayang-tantri",
+    "name": "Wayang Tantri",
+    "category": "jenis-wayang",
+    "summary": "Wayang inovasi I Wayan Wija pada 1980-an yang membawakan cerita hewan Hindu.",
+    "description": "Wayang Tantri adalah inovasi dari I Wayan Wija pada tahun 1980-an. Wayang ini menggunakan boneka kulit untuk menceritakan kisah-kisah hewan (fabel) yang bernuansa Hindu, terinspirasi dari naskah Tantri Kamandaka. Kehadiran wayang Tantri memperluas repertoar pewayangan Bali ke luar epik Mahabharata dan Ramayana.",
+    "key_points": [
+      "Inovasi oleh I Wayan Wija pada 1980-an.",
+      "Membawakan cerita hewan (fabel) Hindu.",
+      "Terinspirasi naskah Tantri Kamandaka.",
+      "Memperluas repertoar pewayangan Bali."
+    ],
+    "details": {
+      "tokoh_inovator": "I Wayan Wija",
+      "tahun": "1980-an",
+      "sumber": "Tantri Kamandaka",
+      "karakter": "Cerita fabel / sasatwa"
+    },
+    "sources": [
+      {"title": "Wayang — World Encyclopedia of Puppetry Arts (UNIMA)", "url": "https://wepa.unima.org/en/wayang/"}
+    ],
+    "images": []
+  },
+  {
+    "id": "m10",
+    "slug": "wayang-lemah",
+    "name": "Wayang Lemah",
+    "category": "jenis-wayang",
+    "summary": "Pertunjukan wayang siang hari yang bersifat sakral untuk upacara keagamaan.",
+    "description": "Wayang lemah adalah pertunjukan wayang yang dilakukan pada siang hari dan bersifat religi/sakral. Berbeda dengan wayang peteng yang dipentaskan malam hari dengan kelir dan penerangan, wayang lemah biasanya digelar tanpa kelir dan berfungsi sebagai media upacara. Lakon yang dipentaskan lebih menekankan aspek taksu dan penyucian, misalnya Sapuh Leger dan Sudamala.",
+    "key_points": [
+      "Dipentaskan pada siang hari.",
+      "Bersifat sakral untuk upacara.",
+      "Umumnya tanpa kelir (layar).",
+      "Fungsi utama: penyucian dan ritual."
+    ],
+    "details": {
+      "waktu": "Siang hari",
+      "fungsi": "Upacara keagamaan/ritual",
+      "kelir": "Tidak menggunakan kelir",
+      "contoh_lakon": "Sapuh Leger, Sudamala"
+    },
+    "sources": [
+      {"title": "Wayang kulit Bali — Wikipedia", "url": "https://id.wikipedia.org/wiki/Wayang_kulit_Bali"}
+    ],
+    "images": []
+  },
+  {
+    "id": "m11",
+    "slug": "wayang-sapuh-leger",
+    "name": "Wayang Sapuh Leger",
+    "category": "jenis-wayang",
+    "summary": "Wayang pembersihan yang dipentaskan untuk upacara ruwatan atau penyucian.",
+    "description": "Wayang Sapuh Leger adalah varian Wayang Parwa yang dipentaskan pada siang hari dan memiliki tema spiritual atau berkaitan dengan upacara agama. Fungsi utamanya adalah ruwatan/pembersihan, khususnya untuk membersihkan aura dan memberi selamat dalam berbagai upacara adat Bali. Berbeda dengan pementasan hiburan malam hari, wayang ini menekankan aspek taksu dan kesucian lakonnya.",
+    "key_points": [
+      "Varian Wayang Parwa untuk ritual.",
+      "Dipentaskan pada siang hari.",
+      "Fungsi: ruwatan dan penyucian.",
+      "Menonjolkan aspek spiritual (taksu)."
+    ],
+    "details": {
+      "induk": "Wayang Parwa",
+      "waktu": "Siang hari",
+      "fungsi": "Ruwatan / penyucian",
+      "sifat": "Spiritual"
+    },
+    "sources": [
+      {"title": "Wayang kulit Bali — Wikipedia", "url": "https://id.wikipedia.org/wiki/Wayang_kulit_Bali"}
+    ],
+    "images": []
+  },
+  {
+    "id": "m12",
+    "slug": "wayang-sudamala",
+    "name": "Wayang Sudamala",
+    "category": "jenis-wayang",
+    "summary": "Wayang pembersihan yang lakonnya bersumber dari kisah Sudamala.",
+    "description": "Wayang Sudamala merupakan salah satu ragam Wayang Parwa yang dipentaskan pada siang hari dan bertujuan untuk pembersihan/penyucian dalam konteks ritual keagamaan. Lakonnya diambil dari kisah Sudamala, tokoh yang melawan kutukan sehingga identik dengan pembebasan dari hal-hal negatif. Wayang ini menegaskan sisi sakral dan terapeutik dari pewayangan Bali.",
+    "key_points": [
+      "Ragam Wayang Parwa untuk siang hari.",
+      "Bersumber dari kisah Sudamala.",
+      "Fungsi: penyucian dan penolak malapetaka.",
+      "Menonjolkan dimensi sakral."
+    ],
+    "details": {
+      "induk": "Wayang Parwa",
+      "sumber": "Kisah Sudamala",
+      "fungsi": "Penyucian / tolak bala",
+      "sifat": "Sakral"
+    },
+    "sources": [
+      {"title": "Wayang kulit Bali — Wikipedia", "url": "https://id.wikipedia.org/wiki/Wayang_kulit_Bali"}
+    ],
+    "images": []
+  },
+  {
+    "id": "m13",
+    "slug": "wayang-kamasan",
+    "name": "Seni Lukis Wayang Kamasan",
+    "category": "jenis-wayang",
+    "summary": "Gaya lukis klasik Bali yang meniru bentuk wayang kulit, lahir dari desa Kamasan, Klungkung.",
+    "description": "Seni lukis Wayang Kamasan adalah salah satu gaya lukis Bali klasik yang paling populer. Disebut Kamasan karena lahir dari desa Kamasan, Klungkung. Bentuk lukisannya mengikuti bentuk wayang kulit: figur dalam profil, wajah bergaya, dan komposisi berpanel yang dibatasi oleh hiasan dedaunan dan awan. Palet warnanya sengaja dibatasi — cokelat muda, cokelat tua, merah oker, hitam, putih, dan kadang emas (prada). Karya I Nyoman Mandra menjadi contoh penting revitalisasi tradisi ini, tetap mengikuti proporsi estetika tradisional.",
+    "key_points": [
+      "Lahir dari desa Kamasan, Klungkung.",
+      "Bentuk mengikuti figur wayang kulit (profil, wajah bergaya).",
+      "Komposisi berpanel dengan hiasan tumbuhan dan awan.",
+      "Palet terbatas: cokelat tua, merah oker, hitam, putih, emas.",
+      "I Nyoman Mandra adalah maestro revitalisasi gaya ini."
+    ],
+    "details": {
+      "asal": "Desa Kamasan, Klungkung, Bali",
+      "gaya": "Wayang Kamasan / Klasik Bali",
+      "palet_warna": "Cokelat, merah oker, hitam, putih, emas (prada)",
+      "tokoh": "I Nyoman Mandra"
+    },
+    "sources": [
+      {"title": "Teknik Seni Lukis Klasik Bali Gaya Kamasan Karya I Nyoman Mandra — Jurnal ISI Surakarta (Acintya)", "url": "https://jurnal.isi-ska.ac.id/index.php/acintya/article/view/1987"},
+      {"title": "Balinese Art Guide — TravJoy", "url": "https://travjoy.com/blog/balinese-art-from-woodcarving-to-batik-a-visual-guide"}
+    ],
+    "images": []
+  }
+]

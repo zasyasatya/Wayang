@@ -1,0 +1,18 @@
+services:
+  wayang:
+    build: .
+    container_name: wayang-bali
+    ports:
+      - "8000:8000"   # API backend / docs
+      - "3000:3000"   # Frontend web
+    environment:
+      - WAYANG_BACKEND_URL=http://127.0.0.1:8000/api
+      - BACKEND_PORT=8000
+      - FRONTEND_PORT=3000
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://127.0.0.1:8000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s

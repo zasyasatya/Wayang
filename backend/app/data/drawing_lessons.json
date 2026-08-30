@@ -1,0 +1,153 @@
+[
+  {
+    "id": "d1",
+    "slug": "mengenal-proporsi",
+    "title": "Mengenal Proporsi dan Wanda",
+    "level": "Pemula",
+    "summary": "Pahami proporsi tubuh wayang dan kelompok wanda agar gambar terlihat 'hidup'.",
+    "steps": [
+      {
+        "title": "Ambil titik acuan (patokan)",
+        "text": "Gambar wayang Bali dibangun dari garis-garis lengkung yang mengikuti bentuk wayang kulit. Mulailah dengan membuat kerangka (sketsa) tipis: garis sumbu vertikal, lalu lingkaran kepala, dan garis horizontal untuk bahu serta pinggul."
+      },
+      {
+        "title": "Kenali wanda (tipe wajah)",
+        "text": "Wanda menentukan bentuk wajah dan watak: alus (halus, berwajah putih, dipakai tokoh halus seperti Arjuna dan Rama), putri (perempuan halus), gagah (kuat dan tegas), denawa (raksasa, besar dan angker), serta panasar (pelawak). Amati satu tokoh dan identifikasi wandanya sebelum menggambar."
+      },
+      {
+        "title": "Proporsi sembilan (nawa sanga)",
+        "text": "Secara tradisional, proporsi wayang kulit Bali mengikuti sistem sembilan bagian kepala terhadap badan, menyerupai proporsi relief candi. Gunakan garis bantu horizontal untuk memisahkan kepala, leher, badan, lengan, dan kaki agar bentuk tetap seimbang."
+      }
+    ],
+    "key_points": [
+      "Mulai dengan sketsa kerangka ringan.",
+      "Kenali wanda sebelum menggambar.",
+      "Gunakan proporsi sembilan bagian sebagai panduan.",
+      "Latih kelengkungan garis (tatahan)."
+    ],
+    "sources": [
+      {"title": "Teknik Menggambar Wayang Bali (bahan pelajaran seni)", "url": "https://www.scribd.com/document/556356858/menggambar-wayang-Bali-2015"},
+      {"title": "Teknik Seni Lukis Klasik Bali Gaya Kamasan — Jurnal ISI Surakarta (Acintya)", "url": "https://jurnal.isi-ska.ac.id/index.php/acintya/article/view/1987"}
+    ]
+  },
+  {
+    "id": "d2",
+    "slug": "menggambar-muka",
+    "title": "Menggambar Muka Wayang",
+    "level": "Pemula",
+    "summary": "Fokus pada bentuk wajah, hidung, mata, dan hiasan kepala — bagian yang paling khas.",
+    "steps": [
+      {
+        "title": "Garis wajah profil",
+        "text": "Wajah wayang digambar dalam profil samping (seperti dalam lukisan Kamasan). Gambar garis dahi yang melengkung, lalu tarik hidung panjangan yang khas, dengan ujung hidung meruncing."
+      },
+      {
+        "title": "Mata dan alis",
+        "text": "Mata pada wayang alus digambar sipit dan halus, sedangkan mata tokoh gagah lebih lebar dan tegas. Gambar alis yang tebal dan melengkung, lalu tambahkan garis ridip bibir dan hidung sesuai wanda."
+      },
+      {
+        "title": "Hiasan kepala",
+        "text": "Hiasan kepala (gelung, mahkota, atau upakara) sangat menentukan identitas tokoh. Tokoh raja memakai mahkota, tokoh satria memakai gelung, dan tokoh raksasa memakai hiasan yang lebih kasar. Perhatikan jenis hiasan ini sebagai petunjuk karakter."
+      }
+    ],
+    "key_points": [
+      "Wajah digambar dalam profil samping.",
+      "Mata halus (alus) vs mata tegas (gagah).",
+      "Hiasan kepala menunjukkan kedudukan dan watak.",
+      "Latih hidung panjang yang khas."
+    ],
+    "sources": [
+      {"title": "Teknik Menggambar Wayang Bali (bahan pelajaran seni)", "url": "https://www.scribd.com/document/556356858/menggambar-wayang-Bali-2015"}
+    ]
+  },
+  {
+    "id": "d3",
+    "slug": "menggambar-badan",
+    "title": "Menggambar Badan, Lengan, dan Kaki",
+    "level": "Menengah",
+    "summary": "Bangun badan dengan pose baku wayang (kidal) serta lengkung lengan dan kaki yang luwes.",
+    "steps": [
+      {
+        "title": "Pose baku (sikap) wayang",
+        "text": "Wayang kulit digambar dalam pose tetap: badan agak membungkuk ke depan, kedua lengan dalam sikap yang luwes, dan salah satu kaki terangkat. Amati bahwa garis badan mengikuti satu lengkungan halus dari kepala hingga pundak."
+      },
+      {
+        "title": "Lengan yang luwes",
+        "text": "Lengan wayang dibuat dari dua ruas: lengan atas dan lengan bawah yang dibengkokkan, dengan pergelangan dan jari yang runcing. Posisi tangan biasanya membentuk sikap seperti memegang senjata atau bersemedi, bergantung pada tokohnya."
+      },
+      {
+        "title": "Kaki dan alas",
+        "text": "Kaki digambar seperti sedang melangkah atau menekuk, dengan hiasan pada ujung kaki (seperti lelujuh). Tambahkan alas atau singgasana sebagai tanda kedudukan tokoh, misalnya singgasana dewa."
+      }
+    ],
+    "key_points": [
+      "Gunakan pose baku wayang (kidal/luwes).",
+      "Lengan terdiri atas dua ruas dengan pergelangan runcing.",
+      "Kaki digambar melangkah atau menekuk.",
+      "Alas (singgasana) menunjukkan kedudukan tokoh."
+    ],
+    "sources": [
+      {"title": "Teknik Menggambar Wayang Bali (bahan pelajaran seni)", "url": "https://www.scribd.com/document/556356858/menggambar-wayang-Bali-2015"}
+    ]
+  },
+  {
+    "id": "d4",
+    "slug": "hiasan-dan-tatahan",
+    "title": "Hiasan dan Tatahan (Ukiran)",
+    "level": "Menengah",
+    "summary": "Tambahkan detail hiasan tubuh seperti prada (emas) dan tatahan agar karya tampak khas wayang.",
+    "steps": [
+      {
+        "title": "Hiasan kain dan perhiasan",
+        "text": "Tokoh wayang dihiasi dengan motif kain yang rumit, gelang (kelat bahu), kalung, anting, dan sabuk. Ksatria memakai gelang dan ikat pinggang dengan hiasan halus, sementara tokoh raksasa memakai hiasan yang lebih besar dan kasar."
+      },
+      {
+        "title": "Teknik prada (emas)",
+        "text": "Prada adalah teknik penyepuhan emas yang menambah kesan mewah pada wayang kulit dan lukisan Kamasan. Dalam gambar, area tertentu seperti mahkota, perhiasan, dan ujung kain bisa diberi warna emas untuk memberi kesan berkilau."
+      },
+      {
+        "title": "Tatahan dan warna",
+        "text": "Warna dalam wayang bersifat simbolik: warna halus cenderung terang (putih/kuning), sedangkan warna gagah/denawa lebih gelap (merah, hitam). Gunakan palet terbatas khas Kamasan — cokelat, merah oker, hitam, putih, dan emas — agar tampil konsisten."
+      }
+    ],
+    "key_points": [
+      "Perhiasan menunjukkan kedudukan dan jenis tokoh.",
+      "Prada (emas) menambah kesan mewah.",
+      "Warna bersifat simbolik.",
+      "Pakai palet terbatas khas Kamasan."
+    ],
+    "sources": [
+      {"title": "Teknik Seni Lukis Klasik Bali Gaya Kamasan — Jurnal ISI Surakarta (Acintya)", "url": "https://jurnal.isi-ska.ac.id/index.php/acintya/article/view/1987"}
+    ]
+  },
+  {
+    "id": "d5",
+    "slug": "latihan-siluet",
+    "title": "Latihan Siluet dan Pengisian Garis",
+    "level": "Pemula",
+    "summary": "Belajar menelusuri siluet luar tokoh untuk mengembangkan ketangkasan menggambar garis.",
+    "steps": [
+      {
+        "title": "Ikuti kontur luar",
+        "text": "Siluet adalah garis luar (outline) tokoh wayang. Mulailah dengan menelusuri bagian kepala, lalu turun ke leher, bahu, tangan, badan, dan kaki. Jangan khawatir jika garis tidak sempurna — yang penting adalah mengikuti kontur secara terus-menerus."
+      },
+      {
+        "title": "Gunakan mode bantuan",
+        "text": "Di platform ini, gunakan gambar siluet tambahan berwarna samar sebagai pemandu. Gambar langsung di atasnya dengan warna penuh untuk melatih koordinasi mata dan tangan."
+      },
+      {
+        "title": "Ulangi dan perhalus",
+        "text": "Setelah selesai, bandingkan hasil dengan siluet referensi. Ulangi latihan untuk mengasah ketepatan garis, lalu tambahkan detail tatahan saat Anda sudah lebih percaya diri."
+      }
+    ],
+    "key_points": [
+      "Siluet adalah garis luar tokoh.",
+      "Mulai dari kepala lalu turun perlahan.",
+      "Gunakan gambar bantuan samar.",
+      "Ulangi untuk meningkatkan ketepatan garis."
+    ],
+    "sources": [
+      {"title": "Teknik Menggambar Wayang Bali (bahan pelajaran seni)", "url": "https://www.scribd.com/document/556356858/menggambar-wayang-Bali-2015"}
+    ]
+  }
+]

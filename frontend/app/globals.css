@@ -1,0 +1,272 @@
+@import "tailwindcss";
+
+/* =========================================================================
+   DESIGN SYSTEM — Wayang Bali Learning Platform
+   -------------------------------------------------------------------------
+   Toko desain terpusat menggunakan CSS custom properties. Untuk mengganti
+   tema (mis. sesuai screenshot), cukup ubah nilai di bagian :root.
+   ========================================================================= */
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Marcellus", ui-serif, Georgia, serif;
+
+  --color-cream-50: #fdf9f1;
+  --color-cream-100: #faf3e6;
+  --color-cream-200: #f3e8d4;
+
+  --color-cocoa-500: #7c5a3d;
+  --color-cocoa-600: #5f4128;
+  --color-cocoa-700: #4a301b;
+  --color-cocoa-800: #372316;
+  --color-cocoa-900: #241509;
+
+  --color-gold-300: #e5c47a;
+  --color-gold-400: #d8ad54;
+  --color-gold-500: #c9942f;
+  --color-gold-600: #a97a24;
+
+  --color-batik-400: #b03a2e;
+  --color-batik-500: #97281c;
+  --color-batik-600: #7c1e14;
+
+  --color-ember-300: #f4c29a;
+  --color-ember-500: #d9764a;
+  --color-ember-600: #b85a33;
+
+  --color-teal-500: #2f8f78;
+
+  --color-night-800: #241d17;
+  --color-night-900: #16110c;
+}
+
+:root {
+  /* Palet inti */
+  --bg: #fdf9f1;
+  --bg-alt: #faf3e6;
+  --surface: #ffffff;
+  --surface-muted: #f7efe1;
+  --border: #e8dcc6;
+  --border-strong: #d8c6a6;
+
+  --text: #2a2019;
+  --text-muted: #6b5b4a;
+  --text-soft: #8a7a68;
+
+  --accent: #c9942f;      /* emas wayang */
+  --accent-hover: #a97a24;
+  --accent-soft: #f6e7c6;
+  --danger: #b03a2e;      /* batik merah */
+  --danger-soft: #f8e4e0;
+  --success: #2f8f78;
+
+  /* Tipografi */
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Marcellus", ui-serif, Georgia, serif;
+
+  /* Radius */
+  --radius-sm: 0.5rem;
+  --radius-md: 0.875rem;
+  --radius-lg: 1.375rem;
+  --radius-xl: 2rem;
+
+  /* Bayangan */
+  --shadow-sm: 0 1px 2px rgba(36, 21, 9, 0.06), 0 1px 3px rgba(36, 21, 9, 0.04);
+  --shadow-md: 0 4px 14px -2px rgba(36, 21, 9, 0.12);
+  --shadow-lg: 0 14px 34px -8px rgba(36, 21, 9, 0.18);
+
+  /* Spasi terukur */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+}
+
+* {
+  border-color: var(--border);
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-feature-settings: "kern", "liga";
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* ============================ Komponen dasar ============================ */
+
+.container-wrap {
+  width: 100%;
+  max-width: 74rem;
+  margin-inline: auto;
+  padding-inline: var(--space-5);
+}
+
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+}
+
+h1, h2, h3, .display {
+  font-family: var(--font-display);
+  color: var(--text);
+  line-height: 1.15;
+}
+
+h1 { font-size: clamp(2rem, 5vw, 3.25rem); font-weight: 400; }
+h2 { font-size: clamp(1.5rem, 3vw, 2.25rem); font-weight: 400; }
+h3 { font-size: 1.25rem; font-weight: 500; }
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--accent-hover);
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.22s ease, transform 0.22s ease, border-color 0.22s ease;
+}
+
+.card-hover:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-3px);
+  border-color: var(--border-strong);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1.25rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.18s ease;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #2a1a08;
+  box-shadow: var(--shadow-sm);
+}
+.btn-primary:hover { background: var(--accent-hover); color: #fff; }
+
+.btn-outline {
+  background: transparent;
+  color: var(--text);
+  border-color: var(--border-strong);
+}
+.btn-outline:hover { background: var(--surface-muted); border-color: var(--accent); }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text-muted);
+}
+.btn-ghost:hover { color: var(--text); background: var(--surface-muted); }
+
+.btn-danger {
+  background: var(--danger);
+  color: #fff;
+}
+.btn-danger:hover { background: var(--batik-600); }
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.28rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.76rem;
+  font-weight: 600;
+  background: var(--accent-soft);
+  color: var(--accent-hover);
+  border: 1px solid var(--accent-soft);
+}
+
+.chip-muted {
+  background: var(--surface-muted);
+  color: var(--text-muted);
+  border-color: var(--border);
+}
+
+.chip-danger {
+  background: var(--danger-soft);
+  color: var(--danger);
+  border-color: var(--danger-soft);
+}
+
+.divider {
+  height: 1px;
+  background: var(--border);
+  border: 0;
+}
+
+/* ============================ Papan gambar ============================ */
+
+.canvas-frame {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  position: relative;
+}
+
+.canvas-board {
+  background:
+    radial-gradient(circle at 50% 40%, rgba(201,148,47,0.05), transparent 60%),
+    var(--cream-50);
+  touch-action: none;
+}
+
+/* Input rentang yang emas */
+input[type="range"] {
+  accent-color: var(--accent);
+}
+
+/* Link andalan */
+a { transition: color 0.15s ease; }
+
+::selection {
+  background: var(--accent-soft);
+  color: var(--cocoa-800);
+}
+
+/* Scrollbar halus */
+::-webkit-scrollbar { height: 10px; width: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
+}
