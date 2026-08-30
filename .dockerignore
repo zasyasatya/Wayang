@@ -1,0 +1,11 @@
+.git
+.gitignore
+.venv
+**/node_modules
+**/.next
+**/run.*.log
+docs
+*.log
+README.md
+Dockerfile
+docker-compose.yml
