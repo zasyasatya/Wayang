@@ -326,6 +326,129 @@ h3 { font-size: 1.05rem; font-weight: 600; }
   touch-action: none;
 }
 
+.canvas-frame {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ============================ Studio atelir ============================ */
+
+.studio-plate {
+  position: relative;
+  aspect-ratio: 220 / 340;
+  width: 100%;
+  user-select: none;
+  background:
+    radial-gradient(ellipse at 50% 28%, #fff8e8 0%, #f4e6c8 72%);
+}
+
+.studio-step-rail {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 0.4rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+@media (max-width: 960px) {
+  .studio-step-rail {
+    display: flex;
+    overflow-x: auto;
+    padding-bottom: 0.25rem;
+  }
+  .studio-step-rail > li {
+    flex: 0 0 10rem;
+  }
+}
+
+.studio-step {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  text-align: left;
+  padding: 0.55rem 0.65rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-muted);
+  transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+}
+
+.studio-step:hover {
+  border-color: var(--border-strong);
+  color: var(--text);
+}
+
+.studio-step.is-active {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.studio-step.is-done:not(.is-active) {
+  color: var(--text);
+}
+
+.studio-step-n {
+  display: grid;
+  place-items: center;
+  width: 1.35rem;
+  height: 1.35rem;
+  flex-shrink: 0;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  background: var(--surface-muted);
+  color: var(--text-muted);
+}
+
+.studio-step.is-active .studio-step-n {
+  background: var(--accent);
+  color: #fff;
+}
+
+.studio-step.is-done:not(.is-active) .studio-step-n {
+  background: var(--success-soft);
+  color: var(--success);
+}
+
+.studio-thumb {
+  flex: 0 0 6.6rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 0.4rem 0.4rem 0.55rem;
+  background: var(--surface);
+  text-align: center;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.studio-thumb:hover {
+  border-color: var(--border-strong);
+}
+
+.studio-thumb.is-active {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-ring);
+}
+
+.studio-thumb-art {
+  display: block;
+  aspect-ratio: 220 / 340;
+  overflow: hidden;
+  border-radius: 0.4rem;
+  background: #f4e6c8;
+}
+
+.studio-thumb-art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 input[type="range"] { accent-color: var(--accent); }
 input[type="checkbox"] { accent-color: var(--accent); }
 

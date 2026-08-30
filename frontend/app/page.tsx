@@ -93,8 +93,8 @@ const NOTES = [
     href: "/tokoh",
   },
   {
-    title: "Berlatih menggambar dengan garis panduan",
-    desc: "Nyalakan mode 'Tampilkan garis panduan' agar mudah menelusuri siluet.",
+    title: "Berlatih menggambar dari acuan",
+    desc: "Mode Konstruksi menampilkan garis nawa sanga yang sama pada acuan dan kanvas.",
     done: true,
     href: "/belajar-menggambar",
   },
@@ -260,9 +260,9 @@ export default function HomePage() {
           <section className="card overflow-hidden">
             <div className="p-6">
               <p className="eyebrow mb-2">Mulai praktik</p>
-              <h3>Gambar siluet wayang sekarang</h3>
+              <h3>Gambar dari acuan sekarang</h3>
               <p className="mt-1 text-sm text-[var(--text-muted)]">
-                Pilih tokoh, gunakan garis panduan, lalu nilai hasil menggambar Anda secara otomatis.
+                Lembar acuan di kiri, kanvas seukuran di kanan. Ikuti tujuh langkah atelir, lalu nilai kontur Anda.
               </p>
               <Link href="/belajar-menggambar" className="btn btn-primary mt-4 w-full">
                 Buka Kanvas Menggambar <ArrowRight size={16} aria-hidden />

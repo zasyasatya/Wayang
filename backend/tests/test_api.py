@@ -104,6 +104,15 @@ def test_silhouettes():
     assert res.status_code == 200
     body = res.json()
     assert body["total"] >= 5
+    arjuna = next(s for s in body["items"] if s["id"] == "arjuna")
+    assert "construction" in arjuna
+    cons = arjuna["construction"]
+    assert cons["view"] == [220, 340]
+    assert len(cons["proportion_lines"]) == 10
+    assert cons["landmarks"]
+    assert cons["gesture"]
+    assert cons["blocks"]
+    assert arjuna["wanda"] == "alus"
 
 
 def test_silhouette_image_svg():

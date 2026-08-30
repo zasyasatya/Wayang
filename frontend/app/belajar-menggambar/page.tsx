@@ -1,17 +1,38 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
-import { api, silhouetteSvgUrl, type Silhouette, type GradingResult } from "@/lib/api";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import {
+  api,
+  silhouetteSvgUrl,
+  type Silhouette,
+  type GradingResult,
+  type DrawingLesson,
+} from "@/lib/api";
 import { SectionHeading } from "@/components/ui";
+import { ConstructionOverlay } from "@/components/studio/ConstructionOverlay";
+import {
+  STUDIO_STEPS,
+  STUDY_MODES,
+  CONSTRUCT_BLUE,
+  INK_BLACK,
+  type StudioLayer,
+  type StudyMode,
+} from "@/lib/studioSteps";
 import {
   PenTool,
   Undo2,
   Trash2,
-  Layers,
   Wand2,
   Download,
   CheckCircle2,
   Info,
+  Eye,
+  Layers,
+  Eraser,
+  ChevronLeft,
+  ChevronRight,
+  BookOpen,
+  Blend,
 } from "lucide-react";
 
 const CANVAS_W = 440;
@@ -19,24 +40,51 @@ const CANVAS_H = 640;
 
 type Tool = "pen" | "eraser";
 
+const FALLBACK_SIL: Silhouette[] = [
+  {
+    id: "arjuna",
+    slug: "arjuna",
+    name: "Arjuna",
+    character_id: "arjuna",
+    difficulty: "mudah",
+    wanda: "alus",
+    description: "Satria alus.",
+    tips: ["Mulai dari garis gestur, bukan dari mata."],
+    ref_points: [],
+  },
+];
+
 export default function BelajarMenggambarPage() {
   const [sil, setSil] = useState<Silhouette[]>([]);
-  const [selected, setSelected] = useState<string>("arjuna");
-  const [showGuide, setShowGuide] = useState(true);
-  const [strokeColor, setStrokeColor] = useState("#0f172a");
-  const [lineWidth, setLineWidth] = useState(4);
+  const [lessons, setLessons] = useState<DrawingLesson[]>([]);
+  const [selected, setSelected] = useState("arjuna");
+  const [stepIndex, setStepIndex] = useState(0);
+  const [mode, setMode] = useState<StudyMode>("konstruksi");
+  const [layer, setLayer] = useState<StudioLayer>("construct");
+  const [showConstruct, setShowConstruct] = useState(true);
+  const [compare, setCompare] = useState(false);
+  const [showLabels, setShowLabels] = useState(true);
+  const [strokeColor, setStrokeColor] = useState(CONSTRUCT_BLUE);
+  const [lineWidth, setLineWidth] = useState(2);
   const [tool, setTool] = useState<Tool>("pen");
   const [result, setResult] = useState<GradingResult | null>(null);
   const [grading, setGrading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [canvasKey, setCanvasKey] = useState(0); // force remount to clear
-  const [drawCount, setDrawCount] = useState(0);
+  const [boardKey, setBoardKey] = useState(0);
+  const [theoryOpen, setTheoryOpen] = useState(false);
 
-  const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const constructRef = useRef<HTMLCanvasElement | null>(null);
+  const inkRef = useRef<HTMLCanvasElement | null>(null);
+  const plateRef = useRef<HTMLDivElement | null>(null);
   const drawing = useRef(false);
   const last = useRef<{ x: number; y: number } | null>(null);
-  const hasInk = useRef(false);
-  const undoStack = useRef<string[]>([]);
+  const constructInk = useRef(false);
+  const inkInk = useRef(false);
+  const undoConstruct = useRef<string[]>([]);
+  const undoInk = useRef<string[]>([]);
+
+  const step = STUDIO_STEPS[stepIndex];
+  const selectedObj = sil.find((s) => s.id === selected) ?? sil[0];
 
   useEffect(() => {
     (async () => {
@@ -44,46 +92,73 @@ export default function BelajarMenggambarPage() {
         const data = await api.silhouettes();
         if (data.items.length) {
           setSil(data.items);
-          setSelected(data.items[0].id);
+          const q =
+            typeof window !== "undefined"
+              ? new URLSearchParams(window.location.search).get("tokoh")
+              : null;
+          const match = q && data.items.find((s) => s.id === q || s.slug === q);
+          setSelected(match ? match.id : data.items[0].id);
         }
       } catch {
-        // fallback minimal agar halaman tetap terisi
-        setSil([
-          {
-            id: "arjuna",
-            slug: "arjuna",
-            name: "Arjuna",
-            character_id: "arjuna",
-            difficulty: "mudah",
-            description: "",
-            tips: [],
-            ref_points: [],
-          },
-        ]);
+        setSil(FALLBACK_SIL);
+      }
+    })();
+    (async () => {
+      try {
+        const data = await api.drawing();
+        setLessons(data.items);
+      } catch {
+        setLessons([]);
       }
     })();
   }, []);
 
-  const selectedObj = sil.find((s) => s.id === selected);
+  useEffect(() => {
+    setLayer(step.layer);
+    setStrokeColor(step.suggestedColor);
+    setLineWidth(step.suggestedWidth);
+    setTool("pen");
+  }, [step]);
 
-  const getPos = useCallback(
-    (e: React.PointerEvent<HTMLCanvasElement>) => {
-      const canvas = canvasRef.current;
-      if (!canvas) return { x: 0, y: 0 };
-      const rect = canvas.getBoundingClientRect();
-      const scaleX = canvas.width / rect.width;
-      const scaleY = canvas.height / rect.height;
-      return {
-        x: (e.clientX - rect.left) * scaleX,
-        y: (e.clientY - rect.top) * scaleY,
-      };
+  const resetBoard = useCallback(() => {
+    setBoardKey((k) => k + 1);
+    constructInk.current = false;
+    inkInk.current = false;
+    undoConstruct.current = [];
+    undoInk.current = [];
+    setResult(null);
+    setError(null);
+    setCompare(false);
+  }, []);
+
+  const chooseTokoh = useCallback(
+    (id: string) => {
+      setSelected(id);
+      setResult(null);
+      setError(null);
+      resetBoard();
     },
-    []
+    [resetBoard]
   );
+
+  const activeCanvas = useCallback(() => {
+    return layer === "construct" ? constructRef.current : inkRef.current;
+  }, [layer]);
+
+  const getPos = useCallback((e: React.PointerEvent) => {
+    const plate = plateRef.current;
+    const canvas = constructRef.current ?? inkRef.current;
+    if (!plate || !canvas) return { x: 0, y: 0 };
+    const rect = plate.getBoundingClientRect();
+    return {
+      x: ((e.clientX - rect.left) * canvas.width) / rect.width,
+      y: ((e.clientY - rect.top) * canvas.height) / rect.height,
+    };
+  }, []);
 
   const drawLine = useCallback(
     (from: { x: number; y: number }, to: { x: number; y: number }) => {
-      const canvas = canvasRef.current;
+      const canvas = activeCanvas();
       if (!canvas) return;
       const ctx = canvas.getContext("2d");
       if (!ctx) return;
@@ -98,31 +173,33 @@ export default function BelajarMenggambarPage() {
       ctx.lineTo(to.x, to.y);
       ctx.stroke();
       ctx.restore();
-      hasInk.current = true;
+      if (layer === "construct") constructInk.current = true;
+      else inkInk.current = true;
     },
-    [lineWidth, strokeColor, tool]
+    [activeCanvas, layer, lineWidth, strokeColor, tool]
   );
 
+  const snapshot = useCallback(() => {
+    const canvas = activeCanvas();
+    if (!canvas) return;
+    const stack = layer === "construct" ? undoConstruct : undoInk;
+    stack.current.push(canvas.toDataURL("image/png"));
+    if (stack.current.length > 30) stack.current.shift();
+  }, [activeCanvas, layer]);
+
   const handleDown = useCallback(
-    (e: React.PointerEvent<HTMLCanvasElement>) => {
+    (e: React.PointerEvent) => {
       e.preventDefault();
       drawing.current = true;
-      const p = getPos(e);
-      last.current = p;
-      // Simpan snapshot sebelum goresan baru untuk mendukung undo.
-      const canvas = canvasRef.current;
-      if (canvas) {
-        undoStack.current.push(canvas.toDataURL("image/png"));
-        if (undoStack.current.length > 30) undoStack.current.shift();
-      }
-      canvasRef.current?.setPointerCapture?.(e.pointerId);
-      setDrawCount((c) => c + 1);
+      last.current = getPos(e);
+      snapshot();
+      plateRef.current?.setPointerCapture?.(e.pointerId);
     },
-    [getPos]
+    [getPos, snapshot]
   );
 
   const handleMove = useCallback(
-    (e: React.PointerEvent<HTMLCanvasElement>) => {
+    (e: React.PointerEvent) => {
       if (!drawing.current || !last.current) return;
       const p = getPos(e);
       drawLine(last.current, p);
@@ -136,43 +213,59 @@ export default function BelajarMenggambarPage() {
     last.current = null;
   }, []);
 
-  const clearCanvas = useCallback(() => {
-    setCanvasKey((k) => k + 1);
-    hasInk.current = false;
-    undoStack.current = [];
-    setResult(null);
-    setError(null);
-  }, []);
-
   const undo = useCallback(() => {
-    const canvas = canvasRef.current;
+    const canvas = activeCanvas();
     if (!canvas) return;
-    const snapshot = undoStack.current.pop();
-    if (!snapshot) return;
+    const stack = layer === "construct" ? undoConstruct : undoInk;
+    const snap = stack.current.pop();
+    if (!snap) {
+      const ctx = canvas.getContext("2d");
+      ctx?.clearRect(0, 0, canvas.width, canvas.height);
+      if (layer === "construct") constructInk.current = false;
+      else inkInk.current = false;
+      return;
+    }
     const img = new Image();
     img.onload = () => {
       const ctx = canvas.getContext("2d");
       if (!ctx) return;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-      hasInk.current = undoStack.current.length > 0 || snapshot !== "";
     };
-    img.src = snapshot;
+    img.src = snap;
+  }, [activeCanvas, layer]);
+
+  const mergeCanvases = useCallback((includeConstruct: boolean) => {
+    const ink = inkRef.current;
+    const con = constructRef.current;
+    const out = document.createElement("canvas");
+    out.width = CANVAS_W;
+    out.height = CANVAS_H;
+    const ctx = out.getContext("2d");
+    if (!ctx) return null;
+    ctx.fillStyle = "#F4E6C8";
+    ctx.fillRect(0, 0, CANVAS_W, CANVAS_H);
+    if (includeConstruct && con) ctx.drawImage(con, 0, 0);
+    if (ink) ctx.drawImage(ink, 0, 0);
+    return out;
   }, []);
 
   const onGrade = useCallback(async () => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    if (!hasInk.current) {
-      setError("Gambar masih kosong. Silakan gambar siluet terlebih dahulu.");
+    if (!inkInk.current && !constructInk.current) {
+      setError("Kanvas masih kosong. Ikuti langkah 1–4: gestur, proporsi, blocking, lalu kontur.");
+      return;
+    }
+    if (!inkInk.current) {
+      setError("Gambar kontur dengan tinta (langkah 4) sebelum dinilai. Konstruksi biru tidak dinilai.");
       return;
     }
     setGrading(true);
     setError(null);
     setResult(null);
     try {
-      const dataUrl = canvas.toDataURL("image/png");
-      const res = await api.grade(dataUrl, selected);
+      const merged = mergeCanvases(false);
+      if (!merged) throw new Error("Kanvas tidak siap.");
+      const res = await api.grade(merged.toDataURL("image/png"), selected);
       setResult(res);
     } catch (e) {
       setError(
@@ -181,73 +274,322 @@ export default function BelajarMenggambarPage() {
     } finally {
       setGrading(false);
     }
-  }, [selected]);
+  }, [mergeCanvases, selected]);
 
   const download = useCallback(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
+    const merged = mergeCanvases(showConstruct);
+    if (!merged) return;
     const a = document.createElement("a");
-    a.href = canvas.toDataURL("image/png");
-    a.download = `wayang-${selected}.png`;
+    a.href = merged.toDataURL("image/png");
+    a.download = `wayang-${selected}-langkah${step.n}.png`;
     a.click();
-  }, [selected]);
+  }, [mergeCanvases, selected, showConstruct, step.n]);
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return;
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "z") {
+        e.preventDefault();
+        undo();
+      }
+      if (e.key >= "1" && e.key <= "7") {
+        setStepIndex(Number(e.key) - 1);
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [undo]);
+
+  const guidesForCanvas = useMemo(() => {
+    if (mode === "observasi") return [];
+    if (mode === "jiplak") return step.guides.filter((g) => g === "contour" || g === "axis");
+    return step.guides;
+  }, [mode, step.guides]);
+
+  const theory = lessons[stepIndex] ?? lessons[0];
 
   return (
     <div className="container-wrap py-6 md:py-8">
       <SectionHeading
-        eyebrow="Materi 4 · Praktik"
-        title="Belajar Menggambar Pola & Siluet"
-        subtitle="Pilih tokoh, gunakan garis bantu sebagai panduan, lalu gambar di atas kanvas. Setelah selesai, nilai hasilnya secara otomatis."
+        eyebrow="Materi 4 · Studio Atelir"
+        title="Gambar dari Acuan"
+        subtitle="Metode konstruksi mahasiswa seni rupa: observasi, proporsi nawa sanga, blocking-in, kontur, landmark, detail, lalu perhalusan. Lembar acuan di kiri — kanvas Anda di kanan, seukuran (sight-size)."
       />
 
-      <div className="grid gap-5 lg:grid-cols-[1fr_1.1fr]">
-        {/* Kontrol kiri */}
-        <aside className="space-y-5">
-          <div className="card p-5">
-            <p className="mb-3 text-[0.7rem] font-bold uppercase tracking-[0.14em] text-[var(--text-soft)]">
-              Pilih siluet tokoh
+      {/* Rel langkah */}
+      <ol className="studio-step-rail mb-5">
+        {STUDIO_STEPS.map((s, i) => (
+          <li key={s.id}>
+            <button
+              type="button"
+              onClick={() => setStepIndex(i)}
+              className={`studio-step ${i === stepIndex ? "is-active" : ""} ${
+                i < stepIndex ? "is-done" : ""
+              }`}
+            >
+              <span className="studio-step-n">{s.n}</span>
+              <span className="min-w-0">
+                <span className="block truncate text-sm font-semibold">{s.title}</span>
+                <span className="hidden truncate text-[0.7rem] text-[var(--text-soft)] sm:block">
+                  {s.subtitle}
+                </span>
+              </span>
+            </button>
+          </li>
+        ))}
+      </ol>
+
+      {/* Instruksi langkah */}
+      <div className="card mb-5 p-5">
+        <div className="flex flex-wrap items-start justify-between gap-3">
+          <div className="min-w-0 max-w-3xl">
+            <p className="eyebrow mb-1">
+              Langkah {step.n} dari 7 · {step.layer === "construct" ? "Pensil konstruksi" : "Tinta"}
             </p>
-            <div className="flex flex-wrap gap-2">
-              {sil.map((s) => (
-                <button
-                  key={s.id}
-                  onClick={() => {
-                    setSelected(s.id);
-                    setResult(null);
-                    setError(null);
-                  }}
-                  className={`btn ${selected === s.id ? "btn-primary" : "btn-outline"}`}
-                >
-                  {s.name}
-                  <span className="ml-1 text-[0.68rem] opacity-70">{s.difficulty}</span>
-                </button>
-              ))}
+            <h2 className="text-lg">{step.title}</h2>
+            <p className="mt-2 text-sm leading-relaxed text-[var(--text-muted)]">{step.instruction}</p>
+          </div>
+          <div className="flex gap-2">
+            <button
+              type="button"
+              className="btn btn-outline btn-sm"
+              disabled={stepIndex === 0}
+              onClick={() => setStepIndex((i) => Math.max(0, i - 1))}
+            >
+              <ChevronLeft size={14} aria-hidden /> Sebelumnya
+            </button>
+            <button
+              type="button"
+              className="btn btn-primary btn-sm"
+              disabled={stepIndex === STUDIO_STEPS.length - 1}
+              onClick={() => setStepIndex((i) => Math.min(STUDIO_STEPS.length - 1, i + 1))}
+            >
+              Lanjut <ChevronRight size={14} aria-hidden />
+            </button>
+          </div>
+        </div>
+        <ul className="mt-4 grid gap-2 sm:grid-cols-3">
+          {step.doList.map((d) => (
+            <li
+              key={d}
+              className="rounded-[var(--radius-md)] bg-[var(--surface-muted)] px-3 py-2 text-xs leading-relaxed text-[var(--text)]"
+            >
+              {d}
+            </li>
+          ))}
+        </ul>
+        <p className="mt-3 flex items-start gap-2 text-xs text-[var(--pending)]">
+          <Info size={14} className="mt-0.5 shrink-0" aria-hidden />
+          {step.caution}
+        </p>
+      </div>
+
+      {/* Pilih tokoh */}
+      <div className="mb-5">
+        <p className="mb-2 text-[0.7rem] font-bold uppercase tracking-[0.14em] text-[var(--text-soft)]">
+          Lembar acuan tokoh
+        </p>
+        <div className="flex gap-3 overflow-x-auto pb-2">
+          {sil.map((s) => (
+            <button
+              key={s.id}
+              type="button"
+              onClick={() => chooseTokoh(s.id)}
+              className={`studio-thumb ${selected === s.id ? "is-active" : ""}`}
+            >
+              <span className="studio-thumb-art">
+                <img src={silhouetteSvgUrl(s.slug)} alt="" draggable={false} />
+              </span>
+              <span className="mt-1.5 block text-xs font-semibold">{s.name}</span>
+              <span className="block text-[0.65rem] text-[var(--text-soft)]">
+                {s.wanda ?? s.difficulty}
+              </span>
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div className="grid gap-5 lg:grid-cols-2 xl:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_16.5rem]">
+        {/* Acuan */}
+        <section className="canvas-frame overflow-hidden">
+          <div className="flex items-center justify-between border-b border-[var(--border)] px-4 py-2.5">
+            <div>
+              <p className="text-[0.68rem] font-bold uppercase tracking-[0.12em] text-[var(--text-soft)]">
+                Lembar acuan
+              </p>
+              <p className="text-sm font-semibold">
+                {selectedObj
+                  ? `${selectedObj.name}${selectedObj.wanda ? ` · wanda ${selectedObj.wanda}` : ""}`
+                  : "Acuan"}
+              </p>
+            </div>
+            <label className="flex items-center gap-2 text-xs text-[var(--text-muted)]">
+              <input
+                type="checkbox"
+                checked={showLabels}
+                onChange={(e) => setShowLabels(e.target.checked)}
+              />
+              Label
+            </label>
+          </div>
+          <div className="studio-plate">
+            {selectedObj && (
+              <img
+                src={silhouetteSvgUrl(selectedObj.slug)}
+                alt={`Acuan ${selectedObj.name}`}
+                className="absolute inset-0 h-full w-full object-contain"
+                draggable={false}
+              />
+            )}
+            <ConstructionOverlay
+              construction={selectedObj?.construction}
+              refPoints={selectedObj?.ref_points}
+              guides={step.guides}
+              focus={step.focus}
+              showLabels={showLabels}
+            />
+          </div>
+          {selectedObj && (
+            <div className="border-t border-[var(--border)] px-4 py-3">
+              <p className="text-xs leading-relaxed text-[var(--text-muted)]">
+                {selectedObj.description}
+              </p>
+            </div>
+          )}
+        </section>
+
+        {/* Kanvas */}
+        <section className="canvas-frame overflow-hidden">
+          <div className="flex items-center justify-between border-b border-[var(--border)] px-4 py-2.5">
+            <div>
+              <p className="text-[0.68rem] font-bold uppercase tracking-[0.12em] text-[var(--text-soft)]">
+                Kanvas Anda
+              </p>
+              <p className="text-sm font-semibold">
+                {layer === "construct" ? "Lapisan konstruksi" : "Lapisan tinta"}
+              </p>
+            </div>
+            <div className="flex gap-1">
+              <button
+                type="button"
+                onClick={undo}
+                className="btn btn-ghost !px-2.5 !py-1 text-xs"
+                title="Urungkan (Ctrl+Z)"
+              >
+                <Undo2 size={14} aria-hidden /> Urungkan
+              </button>
+              <button
+                type="button"
+                onClick={resetBoard}
+                className="btn btn-ghost !px-2.5 !py-1 text-xs"
+              >
+                <Trash2 size={14} aria-hidden /> Bersihkan
+              </button>
             </div>
           </div>
+          <div
+            ref={plateRef}
+            className="studio-plate cursor-crosshair"
+            style={{ touchAction: "none" }}
+            onPointerDown={handleDown}
+            onPointerMove={handleMove}
+            onPointerUp={handleUp}
+            onPointerLeave={handleUp}
+          >
+            {mode === "jiplak" && selectedObj && (
+              <img
+                src={silhouetteSvgUrl(selectedObj.slug)}
+                alt=""
+                className="pointer-events-none absolute inset-0 h-full w-full object-contain opacity-20"
+                draggable={false}
+              />
+            )}
+            <canvas
+              key={`c-${boardKey}`}
+              ref={constructRef}
+              width={CANVAS_W}
+              height={CANVAS_H}
+              className="absolute inset-0 h-full w-full"
+              style={{
+                opacity: showConstruct ? (layer === "ink" ? 0.45 : 1) : 0,
+                pointerEvents: "none",
+              }}
+            />
+            <canvas
+              key={`i-${boardKey}`}
+              ref={inkRef}
+              width={CANVAS_W}
+              height={CANVAS_H}
+              className="absolute inset-0 h-full w-full"
+              style={{ pointerEvents: "none" }}
+            />
+            <ConstructionOverlay
+              construction={selectedObj?.construction}
+              refPoints={selectedObj?.ref_points}
+              guides={guidesForCanvas}
+              focus={step.focus}
+              showLabels={false}
+              muted
+            />
+            {compare && selectedObj && (
+              <img
+                src={silhouetteSvgUrl(selectedObj.slug)}
+                alt=""
+                className="pointer-events-none absolute inset-0 h-full w-full object-contain opacity-35 mix-blend-multiply"
+                draggable={false}
+              />
+            )}
+          </div>
+          <div className="flex items-center justify-between border-t border-[var(--border)] px-4 py-2.5 text-xs text-[var(--text-muted)]">
+            <span>
+              Mode {mode} · langkah {step.n}
+            </span>
+            <span>{compare ? "Membandingkan dengan acuan" : "Sight-size 1:1"}</span>
+          </div>
+        </section>
 
-          <div className="card p-5">
+        {/* Alat */}
+        <aside className="space-y-4 lg:col-span-2 xl:col-span-1">
+          <div className="card p-4">
             <p className="mb-3 text-[0.7rem] font-bold uppercase tracking-[0.14em] text-[var(--text-soft)]">
-              Alat menggambar
+              Lapisan & alat
             </p>
             <div className="grid grid-cols-2 gap-2">
               <button
-                onClick={() => setTool("pen")}
-                className={`btn ${tool === "pen" ? "btn-primary" : "btn-outline"}`}
+                type="button"
+                onClick={() => {
+                  setLayer("construct");
+                  setStrokeColor(CONSTRUCT_BLUE);
+                  setTool("pen");
+                }}
+                className={`btn ${layer === "construct" && tool === "pen" ? "btn-primary" : "btn-outline"}`}
               >
-                <PenTool size={15} aria-hidden /> Pensil
+                <PenTool size={15} aria-hidden /> Konstruksi
               </button>
               <button
-                onClick={() => setTool("eraser")}
-                className={`btn ${tool === "eraser" ? "btn-danger" : "btn-outline"}`}
+                type="button"
+                onClick={() => {
+                  setLayer("ink");
+                  setStrokeColor(INK_BLACK);
+                  setTool("pen");
+                }}
+                className={`btn ${layer === "ink" && tool === "pen" ? "btn-primary" : "btn-outline"}`}
               >
-                <Layers size={15} aria-hidden /> Penghapus
+                <PenTool size={15} aria-hidden /> Tinta
+              </button>
+              <button
+                type="button"
+                onClick={() => setTool("eraser")}
+                className={`btn col-span-2 ${tool === "eraser" ? "btn-danger" : "btn-outline"}`}
+              >
+                <Eraser size={15} aria-hidden /> Penghapus (lapisan aktif)
               </button>
             </div>
 
-            <div className="mt-5 space-y-4">
+            <div className="mt-4 space-y-3">
               <div>
                 <label className="mb-1.5 block text-sm text-[var(--text-muted)]">
-                  Ketebalan goresan: <span className="font-bold text-[var(--text)]">{lineWidth}px</span>
+                  Ketebalan: <span className="font-bold text-[var(--text)]">{lineWidth}px</span>
                 </label>
                 <input
                   type="range"
@@ -259,24 +601,24 @@ export default function BelajarMenggambarPage() {
                 />
               </div>
               <div>
-                <label className="mb-1.5 block text-sm text-[var(--text-muted)]">Warna tinta</label>
-                <div className="flex items-center gap-3">
+                <label className="mb-1.5 block text-sm text-[var(--text-muted)]">Warna</label>
+                <div className="flex items-center gap-2">
                   <input
                     type="color"
                     value={strokeColor}
                     onChange={(e) => setStrokeColor(e.target.value)}
                     className="h-9 w-9 cursor-pointer rounded border border-[var(--border)]"
-                    aria-label="Warna tinta"
+                    aria-label="Warna goresan"
                   />
                   {[
-                    ["#0f172a", "Tinta hitam"],
-                    ["#2563eb", "Biru"],
-                    ["#16a34a", "Hijau"],
-                    ["#9333ea", "Ungu"],
-                    ["#c026d3", "Mawar"],
+                    [CONSTRUCT_BLUE, "Pensil konstruksi"],
+                    [INK_BLACK, "Tinta"],
+                    ["#b45309", "Oker"],
+                    ["#9f1239", "Merah Kamasan"],
                   ].map(([c, label]) => (
                     <button
                       key={c}
+                      type="button"
                       title={label}
                       aria-label={label}
                       onClick={() => setStrokeColor(c)}
@@ -286,118 +628,125 @@ export default function BelajarMenggambarPage() {
                   ))}
                 </div>
               </div>
-              <div className="flex items-center justify-between">
-                <label className="flex items-center gap-2 text-sm text-[var(--text-muted)]">
-                  <input
-                    type="checkbox"
-                    checked={showGuide}
-                    onChange={(e) => setShowGuide(e.target.checked)}
-                  />
-                  Tampilkan garis panduan
-                </label>
-              </div>
-            </div>
-
-            <div className="mt-5 grid grid-cols-2 gap-2">
-              <button onClick={clearCanvas} className="btn btn-ghost">
-                <Trash2 size={15} aria-hidden /> Bersihkan
-              </button>
-              <button onClick={download} className="btn btn-ghost">
-                <Download size={15} aria-hidden /> Unduh
-              </button>
             </div>
           </div>
 
+          <div className="card p-4">
+            <p className="mb-3 text-[0.7rem] font-bold uppercase tracking-[0.14em] text-[var(--text-soft)]">
+              Cara memakai acuan
+            </p>
+            <div className="space-y-2">
+              {STUDY_MODES.map((m) => (
+                <label
+                  key={m.id}
+                  className={`flex cursor-pointer gap-2 rounded-[var(--radius-md)] border px-3 py-2 ${
+                    mode === m.id
+                      ? "border-[var(--accent)] bg-[var(--accent-soft)]"
+                      : "border-[var(--border)]"
+                  }`}
+                >
+                  <input
+                    type="radio"
+                    name="study-mode"
+                    checked={mode === m.id}
+                    onChange={() => setMode(m.id)}
+                    className="mt-1"
+                  />
+                  <span>
+                    <span className="block text-sm font-semibold">{m.title}</span>
+                    <span className="block text-[0.7rem] leading-relaxed text-[var(--text-muted)]">
+                      {m.hint}
+                    </span>
+                  </span>
+                </label>
+              ))}
+            </div>
+            <div className="mt-3 space-y-2 text-sm text-[var(--text-muted)]">
+              <label className="flex items-center gap-2">
+                <input
+                  type="checkbox"
+                  checked={showConstruct}
+                  onChange={(e) => setShowConstruct(e.target.checked)}
+                />
+                <Layers size={14} aria-hidden /> Tampilkan konstruksi
+              </label>
+              <label className="flex items-center gap-2">
+                <input
+                  type="checkbox"
+                  checked={compare}
+                  onChange={(e) => setCompare(e.target.checked)}
+                />
+                <Blend size={14} aria-hidden /> Bandingkan dengan acuan
+              </label>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 gap-2">
+            <button type="button" onClick={onGrade} className="btn btn-primary col-span-2" disabled={grading}>
+              <Wand2 size={16} aria-hidden />
+              {grading ? "Menilai…" : "Nilai kontur"}
+            </button>
+            <button type="button" onClick={download} className="btn btn-outline">
+              <Download size={15} aria-hidden /> Unduh
+            </button>
+            <button type="button" onClick={resetBoard} className="btn btn-outline">
+              <Trash2 size={15} aria-hidden /> Ulang
+            </button>
+          </div>
+
           {selectedObj && (
-            <div className="card p-5">
+            <div className="card p-4">
               <p className="mb-2 flex items-center gap-1.5 font-semibold text-[var(--text)]">
-                <Info size={15} aria-hidden /> Tips menggambar {selectedObj.name}
+                <Eye size={15} aria-hidden /> Catatan acuan
               </p>
-              <ul className="list-disc space-y-1.5 pl-5 text-sm text-[var(--text-muted)]">
-                {selectedObj.tips.map((t, i) => (
-                  <li key={i}>{t}</li>
+              <ul className="list-disc space-y-1.5 pl-5 text-xs text-[var(--text-muted)]">
+                {selectedObj.tips.map((t) => (
+                  <li key={t}>{t}</li>
                 ))}
               </ul>
             </div>
           )}
         </aside>
+      </div>
 
-        {/* Kanvas */}
-        <div className="space-y-4">
-          <div className="canvas-frame">
-            <div className="flex items-center justify-between border-b border-[var(--border)] px-4 py-2.5">
-              <span className="text-sm font-semibold">
-                {selectedObj ? `Siluet ${selectedObj.name}` : "Kanvas"}
-              </span>
-              <div className="flex gap-2">
-                <button
-                  onClick={undo}
-                  className="btn btn-ghost !py-1 !px-2.5 text-xs"
-                  title="Batalkan goresan terakhir"
-                >
-                  <Undo2 size={14} aria-hidden /> Urungkan
-                </button>
-                <button
-                  onClick={clearCanvas}
-                  className="btn btn-ghost !py-1 !px-2.5 text-xs"
-                  title="Hapus semua goresan"
-                >
-                  <Trash2 size={14} aria-hidden /> Bersihkan
-                </button>
-              </div>
-            </div>
-            <div className="canvas-board relative">
-              <canvas
-                key={canvasKey}
-                ref={canvasRef}
-                width={CANVAS_W}
-                height={CANVAS_H}
-                className="block h-auto w-full cursor-crosshair"
-                style={{ touchAction: "none" }}
-                onPointerDown={handleDown}
-                onPointerMove={handleMove}
-                onPointerUp={handleUp}
-                onPointerLeave={handleUp}
-              />
-              {showGuide && selectedObj && (
-                <div className="pointer-events-none absolute inset-0">
-                  <img
-                    src={silhouetteSvgUrl(selectedObj.slug)}
-                    alt=""
-                    className="h-full w-full object-contain opacity-15"
-                    draggable={false}
-                  />
+      {error && (
+        <p className="mt-5 rounded-[var(--radius-md)] border border-[var(--danger)]/40 bg-[var(--danger-soft)] px-4 py-3 text-sm text-[var(--danger)]">
+          {error}
+        </p>
+      )}
+
+      {result && (
+        <div className="mt-5">
+          <ResultPanel result={result} />
+        </div>
+      )}
+
+      {theory && (
+        <div className="card mt-5 overflow-hidden">
+          <button
+            type="button"
+            className="flex w-full items-center justify-between px-5 py-4 text-left"
+            onClick={() => setTheoryOpen((o) => !o)}
+          >
+            <span className="flex items-center gap-2 font-semibold">
+              <BookOpen size={16} className="text-[var(--accent)]" aria-hidden />
+              Teori langkah ini · {theory.title}
+            </span>
+            <span className="text-xs text-[var(--text-soft)]">{theoryOpen ? "Tutup" : "Buka"}</span>
+          </button>
+          {theoryOpen && (
+            <div className="space-y-4 border-t border-[var(--border)] px-5 py-4">
+              <p className="text-sm text-[var(--text-muted)]">{theory.summary}</p>
+              {theory.steps.map((s) => (
+                <div key={s.title}>
+                  <p className="text-sm font-semibold">{s.title}</p>
+                  <p className="mt-1 text-sm leading-relaxed text-[var(--text-muted)]">{s.text}</p>
                 </div>
-              )}
+              ))}
             </div>
-            <div className="flex items-center justify-between border-t border-[var(--border)] px-4 py-2.5 text-xs text-[var(--text-muted)]">
-              <span>Goresan aktif: {drawCount}</span>
-              <span>Skala bantuan: {showGuide ? "Tampil" : "Sembunyi"}</span>
-            </div>
-          </div>
-
-          {/* Aksi & hasil */}
-          <div className="flex flex-wrap items-center gap-3">
-            <button onClick={onGrade} className="btn btn-primary" disabled={grading}>
-              <Wand2 size={16} aria-hidden />
-              {grading ? "Menilai…" : "Nilai Hasil Gambar"}
-            </button>
-            <button onClick={clearCanvas} className="btn btn-outline">
-              <Trash2 size={16} aria-hidden /> Gambar Ulang
-            </button>
-          </div>
-
-          {error && (
-            <p className="rounded-[var(--radius-md)] border border-[var(--danger)]/40 bg-[var(--danger-soft)] px-4 py-3 text-sm text-[var(--danger)]">
-              {error}
-            </p>
-          )}
-
-          {result && (
-            <ResultPanel result={result} />
           )}
         </div>
-      </div>
+      )}
     </div>
   );
 }
@@ -407,12 +756,12 @@ function ResultPanel({ result }: { result: GradingResult }) {
     result.grade === "A"
       ? "var(--success)"
       : result.grade === "B"
-      ? "var(--info)"
-      : result.grade === "C"
-      ? "var(--accent)"
-      : result.grade.startsWith("D")
-      ? "var(--pending)"
-      : "var(--danger)";
+        ? "var(--info)"
+        : result.grade === "C"
+          ? "var(--accent)"
+          : result.grade.startsWith("D")
+            ? "var(--pending)"
+            : "var(--danger)";
 
   return (
     <div className="card p-6">
@@ -435,7 +784,6 @@ function ResultPanel({ result }: { result: GradingResult }) {
         </span>
       </div>
 
-      {/* Dimensi */}
       <div className="mt-6 space-y-3">
         {result.dimensions.map((d) => (
           <div key={d.name}>
@@ -446,7 +794,7 @@ function ResultPanel({ result }: { result: GradingResult }) {
             <div className="h-2.5 w-full overflow-hidden rounded-full bg-[var(--surface-muted)]">
               <div
                 className="h-full rounded-full"
-                style={{ width: `${d.score}%`, background: gradeColor }}
+                style={{ width: `${Math.min(100, d.score)}%`, background: gradeColor }}
               />
             </div>
             <p className="mt-1 text-xs text-[var(--text-soft)]">{d.note}</p>
@@ -454,14 +802,13 @@ function ResultPanel({ result }: { result: GradingResult }) {
         ))}
       </div>
 
-      {/* Umpan balik */}
       <div className="mt-6 rounded-[var(--radius-md)] bg-[var(--surface-muted)] p-4">
         <p className="mb-2 text-[0.7rem] font-bold uppercase tracking-[0.14em] text-[var(--text-soft)]">
           Masukan untuk Anda
         </p>
         <ul className="list-disc space-y-1.5 pl-5 text-sm text-[var(--text)]">
-          {result.feedback.map((f, i) => (
-            <li key={i}>{f}</li>
+          {result.feedback.map((f) => (
+            <li key={f}>{f}</li>
           ))}
         </ul>
       </div>

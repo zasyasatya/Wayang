@@ -67,15 +67,53 @@ export interface DrawingLesson {
   sources: SourceLink[];
 }
 
+export interface ConstructionBlock {
+  type: "ellipse" | "line";
+  cx?: number;
+  cy?: number;
+  rx?: number;
+  ry?: number;
+  x1?: number;
+  y1?: number;
+  x2?: number;
+  y2?: number;
+  label: string;
+}
+
+export interface ConstructionLandmark {
+  id: string;
+  label: string;
+  x: number;
+  y: number;
+  zone: string;
+}
+
+export interface Construction {
+  view: [number, number];
+  bbox: { x: number; y: number; w: number; h: number };
+  axis: { x1: number; y1: number; x2: number; y2: number };
+  gesture: number[][];
+  head: { cx: number; cy: number; rx: number; ry: number };
+  proportion_lines: { y: number; label: string }[];
+  unit: number;
+  blocks: ConstructionBlock[];
+  landmarks: ConstructionLandmark[];
+  ground_y: number;
+  face_box: { x: number; y: number; w: number; h: number };
+  contour?: number[][];
+}
+
 export interface Silhouette {
   id: string;
   slug: string;
   name: string;
   character_id: string;
   difficulty: string;
+  wanda?: string;
   description: string;
   tips: string[];
   ref_points: number[][];
+  construction?: Construction;
 }
 
 export interface GradingDimension {

@@ -15,7 +15,7 @@
 | **Jenis Wayang** | Wayang Parwa, Ramayana, Wong (Orang), Gambuh, Calonarang, Cupak, Sasak, Arja, Tantri, Sapuh Leger, wayang Lemah, hingga Seni Lukis Kamasan. Setiap halaman menyertakan sumber terpercaya. |
 | **Tokoh yang Berperan** | Profil tokoh dengan wanda & watak: Rama, Sita, Arjuna, Bima, Gatotkaca, Kresna, Hanoman, Rahwana, Sumbadra, Abimanyu, Srikandi, panasar Tualen/Merdah/Delem/Sangut, Betara Guru, Kalantaka. |
 | **Sejarah & Filosofi** | Asal-usul, masa Majapahit, Bali Hindu Klasik, pengakuan UNESCO, simbolisme gunungan & kiwa-tengen, dan perkembangan kontemporer. |
-| **Belajar Menggambar** | Panduan proporsi/wanda, menggambar muka & badan, hiasan & tatahan, lalu **latihan siluet interaktif** dengan kanvas gambar (pensil, penghapus, ketebalan, warna) dan **penilaian otomatis**. |
+| **Belajar Menggambar** | Studio atelir: lembar acuan profil wayang di kiri, kanvas seukuran di kanan. Tujuh langkah seni rupa (observasi → nawa sanga → blocking-in → kontur → landmark → detail → perhalus), dua lapisan (konstruksi + tinta), lalu **penilaian otomatis**. |
 
 **Penilaian otomatis menggambar** menghitung dua dimensi utama:
 1. **Ketepatan Bentuk (Merit)** — seberapa dekat garis Anda dengan siluet referensi.

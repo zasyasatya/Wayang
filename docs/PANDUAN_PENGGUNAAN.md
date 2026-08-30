@@ -35,26 +35,29 @@ Setiap halaman materi mencantumkan **sumber terpercaya/terakreditasi** di bagian
 
 ---
 
-## 3. Belajar Menggambar (Praktik)
+## 3. Belajar Menggambar (Studio Atelir)
 
-Ini bagian yang paling menarik. Ikuti langkah berikut:
+Studio ini meniru cara mahasiswa seni rupa menggambar **dari acuan** (bukan menjiplak). Lembar acuan di kiri, kanvas Anda di kanan — keduanya seukuran (**sight-size**).
 
 1. Dari menu pilih **Belajar Menggambar**.
-2. Di panel kiri, **pilih siluet tokoh** (mis. Arjuna, Bima, Rama, Hanoman, Gatotkaca, atau Tualen).
-3. **Atur alat gambar**:
-   - **Pensil** / **Penghapus** — pilih mode goresan.
-   - **Ketebalan goresan** — geser slider (1–14px).
-   - **Warna tinta** — pilih dari palet atau *color picker*.
-   - **Tampilkan garis panduan** — centang untuk menampilkan siluet samar (panduan) di atas kanvas.
-4. **Gambar** langsung dengan menekan dan menggeser pada kanvas. Gunakan **Urungkan** untuk membatalkan goresan terakhir, atau **Bersihkan** untuk memulai ulang.
-5. Saat selesai, klik **Nilai Hasil Gambar**.
-6. Sistem menampilkan:
-   - **Nilai huruf** (A–E) dan **skor total** (0–100).
-   - **Tiga dimensi**: Ketepatan Bentuk (Merit), Kelengkapan Kontur (Coverage), dan Ketekunan Menggambar.
-   - **Umpan balik bahasa Indonesia** yang membimbing Anda memperbaiki gambar.
-7. Klik **Unduh** untuk menyimpan gambar Anda, atau **Gambar Ulang** untuk mencoba lagi.
+2. Pilih **lembar acuan tokoh** (Arjuna, Rama, Bima, Gatotkaca, Hanoman, atau Tualen). Acuan adalah profil wayang, sesuai konvensi Kamasan.
+3. Ikuti **tujuh langkah** di rel atas (pintasan papan ketik `1`–`7`):
+   1. **Observasi** — amati keseluruhan; tarik satu garis gestur.
+   2. **Proporsi** — bagi tinggi menjadi sembilan unit (nawa sanga).
+   3. **Blocking-in** — oval kepala, oval badan, kapsul anggota gerak.
+   4. **Kontur** — beralih ke tinta; telusuri garis luar.
+   5. **Landmark** — mata, sendi, pinggang, lutut.
+   6. **Detail** — muka, gelung, tatahan.
+   7. **Perhalus** — kualitas garis, bandingkan, lalu nilai.
+4. **Cara memakai acuan**:
+   - **Konstruksi** (disarankan) — garis bantu yang sama muncul di acuan dan kanvas.
+   - **Observasi** — kanvas kosong; gambar hanya dengan mata.
+   - **Jiplak pemula** — siluet samar di kanvas (latihan koordinasi, bukan metode seni rupa).
+5. Ada **dua lapisan**: pensil konstruksi (biru) dan tinta. Penilaian otomatis memakai **lapisan tinta** (kontur).
+6. Saat selesai langkah 4+, klik **Nilai kontur**. Sistem menampilkan huruf A–E, skor, tiga dimensi, dan umpan balik.
+7. **Bandingkan dengan acuan** menumpuk siluet samar di atas gambar Anda — teknik koreksi atelir. **Unduh** menyimpan gabungan lapisan.
 
-> **Tips**: Nyalakan *garis panduan* saat pertama kali berlatih agar lebih mudah menelusuri kontur. Semakin sering berlatih, semakin tinggi skor Anda.
+> **Tips:** Jangan mulai dari mata. Gestur dan proporsi dulu; detail di akhir. `Ctrl+Z` mengurungkan goresan pada lapisan aktif.
 
 ---
 
