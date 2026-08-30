@@ -17,6 +17,9 @@ export const metadata: Metadata = {
     "menggambar wayang",
     "seni pewayangan",
   ],
+  icons: {
+    icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
+  },
   openGraph: {
     title: "Wayang Bali — Platform Belajar Budaya",
     description:

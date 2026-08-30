@@ -6,10 +6,17 @@
 #
 # Build:    docker build -t wayang-bali .
 # Run:      docker run -p 8000:8000 -p 3000:3000 wayang-bali
+#
+# Catatan penting:
+#   - Semua stage image sengaja dipakai varian *bookworm* (glibc) dan bukan
+#     Alpine (musl). Binary Node dari image Alpine tidak dapat dijalankan di
+#     atas base Debian/glibc, sehingga container akan gagal saat start.
+#   - Folder opsional seperti frontend/public disalin lewat COPY direktori
+#     agar build tidak gagal ketika folder tersebut belum ada.
 # ===========================================================================
 
 # ---- Tahap 1: dependensi & asset frontend ----
-FROM node:22-alpine AS frontend
+FROM node:22-bookworm-slim AS frontend
 WORKDIR /app
 # Salin manifest lalu install agar layer cache efektif.
 COPY frontend/package.json frontend/package-lock.json* ./
@@ -18,7 +25,7 @@ COPY frontend/ ./
 RUN npm run build
 
 # ---- Tahap 2: environment Python + backend ----
-FROM python:3.11-slim AS pythonenv
+FROM python:3.11-slim-bookworm AS pythonenv
 WORKDIR /app
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1
@@ -35,7 +42,7 @@ COPY backend/requirements.txt /app/backend/requirements.txt
 RUN python -m pip install --no-cache-dir -r /app/backend/requirements.txt
 
 # ---- Tahap 3: image final ----
-FROM python:3.11-slim
+FROM python:3.11-slim-bookworm
 WORKDIR /app
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
@@ -48,9 +55,9 @@ RUN apt-get update && \
         ca-certificates \
         && rm -rf /var/lib/apt/lists/*
 
-# Sediakan Node.js (untuk menjalankan Next start)
-COPY --from=node:22-alpine /usr/local/bin/node /usr/local/bin/node
-COPY --from=node:22-alpine /usr/local/lib/node_modules /usr/local/lib/node_modules
+# Sediakan Node.js (glibc, dari stage frontend) untuk menjalankan Next start
+COPY --from=frontend /usr/local/bin/node /usr/local/bin/node
+COPY --from=frontend /usr/local/lib/node_modules /usr/local/lib/node_modules
 RUN ln -sf /usr/local/lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npm || true
 
 # Backend Python
@@ -61,8 +68,11 @@ COPY backend/ /app/backend/
 # Frontend (hasil build + dependencies)
 COPY --from=frontend /app/node_modules /app/frontend/node_modules
 COPY --from=frontend /app/.next /app/frontend/.next
-COPY frontend/package.json frontend/next.config.ts /app/frontend/
-COPY frontend/public /app/frontend/public
+# Salin source frontend: package.json, next.config.ts, public/, app/, lib/, dst.
+# Memakai COPY direktori (bukan path spesifik) supaya build tetap berjalan
+# meski folder opsional seperti frontend/public belum ada. node_modules dan
+# .next tidak tertimpa karena keduanya tercantum di .dockerignore.
+COPY frontend/ /app/frontend/
 
 # Deployment entrypoint
 COPY docker/start.sh /app/start.sh
