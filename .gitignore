@@ -16,6 +16,9 @@ out/
 .env*
 !.env.local.example
 
+# Kredensial admin lokal (hasil scripts/seed_admin.py) — jangan di-commit
+backend/app/data/users.json
+
 # Logs & aset runtime / marker
 *.log
 backend/run.backend.log

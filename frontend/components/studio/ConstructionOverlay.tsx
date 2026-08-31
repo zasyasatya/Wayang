@@ -28,8 +28,8 @@ export function ConstructionOverlay({
 }: Props) {
   if (!construction) return null;
   const [vw, vh] = construction.view;
-  const stroke = muted ? "rgba(37, 99, 235, 0.45)" : "rgba(37, 99, 235, 0.78)";
-  const fill = muted ? "rgba(37, 99, 235, 0.08)" : "rgba(37, 99, 235, 0.12)";
+  const stroke = muted ? "rgba(61, 90, 128, 0.45)" : "rgba(61, 90, 128, 0.8)";
+  const fill = muted ? "rgba(61, 90, 128, 0.08)" : "rgba(61, 90, 128, 0.12)";
   const labelFill = muted ? "rgba(15, 23, 42, 0.45)" : "rgba(15, 23, 42, 0.72)";
   const want = (g: GuideKind) => guides.includes(g);
   const contour = construction.contour?.length ? construction.contour : refPoints;
@@ -195,7 +195,7 @@ export function ConstructionOverlay({
 
       {landmarks.map((lm) => (
         <g key={lm.id}>
-          <circle cx={lm.x} cy={lm.y} r="2.1" fill="#2563eb" opacity={muted ? 0.55 : 0.9} />
+          <circle cx={lm.x} cy={lm.y} r="2.1" fill="#3d5a80" opacity={muted ? 0.55 : 0.9} />
           <circle cx={lm.x} cy={lm.y} r="3.4" fill="none" stroke={stroke} strokeWidth="0.5" />
           {showLabels && (
             <text

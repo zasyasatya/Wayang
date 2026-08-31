@@ -412,18 +412,18 @@ export default function BelajarMenggambarPage() {
       <div className="grid gap-5 lg:grid-cols-2 xl:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_16.5rem]">
         {/* Acuan */}
         <section className="canvas-frame overflow-hidden">
-          <div className="flex items-center justify-between border-b border-[var(--border)] px-4 py-2.5">
-            <div>
+          <div className="flex items-center justify-between gap-3 border-b border-[var(--border)] px-3 py-2.5 sm:px-4">
+            <div className="min-w-0">
               <p className="text-[0.68rem] font-bold uppercase tracking-[0.12em] text-[var(--text-soft)]">
                 Lembar acuan
               </p>
-              <p className="text-sm font-semibold">
+              <p className="truncate text-sm font-semibold">
                 {selectedObj
                   ? `${selectedObj.name}${selectedObj.wanda ? ` · wanda ${selectedObj.wanda}` : ""}`
                   : "Acuan"}
               </p>
             </div>
-            <label className="flex items-center gap-2 text-xs text-[var(--text-muted)]">
+            <label className="flex shrink-0 items-center gap-2 text-xs text-[var(--text-muted)]">
               <input
                 type="checkbox"
                 checked={showLabels}
@@ -460,30 +460,33 @@ export default function BelajarMenggambarPage() {
 
         {/* Kanvas */}
         <section className="canvas-frame overflow-hidden">
-          <div className="flex items-center justify-between border-b border-[var(--border)] px-4 py-2.5">
-            <div>
+          <div className="flex items-center justify-between gap-3 border-b border-[var(--border)] px-3 py-2.5 sm:px-4">
+            <div className="min-w-0">
               <p className="text-[0.68rem] font-bold uppercase tracking-[0.12em] text-[var(--text-soft)]">
                 Kanvas Anda
               </p>
-              <p className="text-sm font-semibold">
+              <p className="truncate text-sm font-semibold">
                 {layer === "construct" ? "Lapisan konstruksi" : "Lapisan tinta"}
               </p>
             </div>
-            <div className="flex gap-1">
+            <div className="flex shrink-0 gap-1">
               <button
                 type="button"
                 onClick={undo}
                 className="btn btn-ghost !px-2.5 !py-1 text-xs"
                 title="Urungkan (Ctrl+Z)"
               >
-                <Undo2 size={14} aria-hidden /> Urungkan
+                <Undo2 size={14} aria-hidden />
+                <span className="hidden sm:inline">Urungkan</span>
               </button>
               <button
                 type="button"
                 onClick={resetBoard}
                 className="btn btn-ghost !px-2.5 !py-1 text-xs"
+                title="Bersihkan kanvas"
               >
-                <Trash2 size={14} aria-hidden /> Bersihkan
+                <Trash2 size={14} aria-hidden />
+                <span className="hidden sm:inline">Bersihkan</span>
               </button>
             </div>
           </div>
@@ -554,7 +557,7 @@ export default function BelajarMenggambarPage() {
             <p className="mb-3 text-[0.7rem] font-bold uppercase tracking-[0.14em] text-[var(--text-soft)]">
               Lapisan & alat
             </p>
-            <div className="grid grid-cols-2 gap-2">
+            <div className="grid grid-cols-1 gap-2 min-[420px]:grid-cols-2">
               <button
                 type="button"
                 onClick={() => {
@@ -562,7 +565,7 @@ export default function BelajarMenggambarPage() {
                   setStrokeColor(CONSTRUCT_BLUE);
                   setTool("pen");
                 }}
-                className={`btn ${layer === "construct" && tool === "pen" ? "btn-primary" : "btn-outline"}`}
+                className={`btn w-full ${layer === "construct" && tool === "pen" ? "btn-primary" : "btn-outline"}`}
               >
                 <PenTool size={15} aria-hidden /> Konstruksi
               </button>
@@ -573,16 +576,17 @@ export default function BelajarMenggambarPage() {
                   setStrokeColor(INK_BLACK);
                   setTool("pen");
                 }}
-                className={`btn ${layer === "ink" && tool === "pen" ? "btn-primary" : "btn-outline"}`}
+                className={`btn w-full ${layer === "ink" && tool === "pen" ? "btn-primary" : "btn-outline"}`}
               >
                 <PenTool size={15} aria-hidden /> Tinta
               </button>
               <button
                 type="button"
                 onClick={() => setTool("eraser")}
-                className={`btn col-span-2 ${tool === "eraser" ? "btn-danger" : "btn-outline"}`}
+                className={`btn w-full ${tool === "eraser" ? "btn-danger" : "btn-outline"}`}
               >
-                <Eraser size={15} aria-hidden /> Penghapus (lapisan aktif)
+                <Eraser size={15} aria-hidden />
+                Penghapus <span className="hidden sm:inline">(lapisan aktif)</span>
               </button>
             </div>
 

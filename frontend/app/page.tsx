@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Greeting } from "@/components/Greeting";
 import {
   ListChecks,
   FolderCheck,
@@ -62,19 +63,19 @@ const EVENTS = [
   {
     title: "Mengenal Wanda & Proporsi",
     time: "01:00 PM to 02:30 PM",
-    tone: "#16a34a",
+    tone: "var(--success)",
     tag: "Pemula",
   },
   {
     title: "Menggambar Muka Wayang",
     time: "04:00 PM to 02:30 PM",
-    tone: "#2563eb",
+    tone: "var(--accent)",
     tag: "Pemula",
   },
   {
     title: "Latihan Siluet + Penilaian",
     time: "05:00 PM to 02:30 PM",
-    tone: "#9333ea",
+    tone: "var(--pending)",
     tag: "Menengah",
   },
 ];
@@ -107,16 +108,13 @@ function statusChip(tone: string) {
 export default function HomePage() {
   return (
     <div className="container-wrap py-6 md:py-8">
-      {/* Greeting */}
+      {/* Greeting (sadar sesi admin) */}
       <div className="mb-6">
-        <p className="text-sm text-[var(--text-muted)]">Selamat datang di platform belajar</p>
-        <h1 className="mt-1">
-          Selamat Belajar! Salam, <span className="text-[var(--accent)]">John</span>,
-        </h1>
+        <Greeting />
       </div>
 
       {/* Stat chips */}
-      <div className="mb-6 flex flex-wrap gap-3">
+      <div className="mb-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
         <Stat value="13" label="Jenis Wayang" tone="info" icon={Star} />
         <Stat value="18" label="Tokoh" tone="success" icon={FolderCheck} />
         <Stat value="6" label="Siluet Latihan" tone="danger" icon={ListChecks} />
@@ -134,7 +132,7 @@ export default function HomePage() {
                 Modul Belajar
               </h3>
               <div className="flex items-center gap-2">
-                <span className="btn btn-outline btn-sm">
+                <span className="btn btn-outline btn-sm hidden md:inline-flex">
                   Minggu Ini <ChevronDown size={14} aria-hidden />
                 </span>
                 <Link href="/jenis-wayang" className="btn btn-soft btn-sm">
@@ -194,7 +192,7 @@ export default function HomePage() {
                 <div key={d.day} className="flex flex-col items-center gap-1.5 rounded-xl py-2.5 text-center">
                   <span className="text-[0.7rem] font-bold text-[var(--text-soft)]">{d.dow}</span>
                   <span
-                    className={`grid h-9 w-9 place-items-center rounded-full text-sm font-bold ${
+                    className={`grid h-8 w-8 place-items-center rounded-full text-sm font-bold sm:h-9 sm:w-9 ${
                       d.active
                         ? "bg-[var(--accent)] text-white shadow-[var(--shadow-sm)]"
                         : "text-[var(--text-muted)]"
@@ -325,13 +323,13 @@ function Stat({
     pending: "bg-[var(--pending-soft)] text-[var(--pending)]",
   };
   return (
-    <div className="card flex items-center gap-3 px-4 py-3">
-      <span className={`grid h-9 w-9 place-items-center rounded-full ${tones[tone]}`}>
+    <div className="card flex min-w-0 items-center gap-2.5 px-3 py-3 sm:gap-3 sm:px-4">
+      <span className={`grid h-9 w-9 shrink-0 place-items-center rounded-full ${tones[tone]}`}>
         <Icon size={16} aria-hidden />
       </span>
-      <div className="leading-tight">
+      <div className="min-w-0 leading-tight">
         <p className="text-lg font-bold text-[var(--text)]">{value}</p>
-        <p className="text-xs text-[var(--text-muted)]">{label}</p>
+        <p className="truncate text-xs text-[var(--text-muted)]">{label}</p>
       </div>
     </div>
   );

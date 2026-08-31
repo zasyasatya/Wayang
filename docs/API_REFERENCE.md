@@ -131,7 +131,43 @@ Mengembalikan **SVG** siluet (`image/svg+xml`). Contoh: `/api/silhouettes/arjuna
 
 ---
 
-## 8. Environment Variables
+## 8. Autentikasi (Admin)
+
+Kredensial bawaan: username `admin`, password `wayang2026` (bisa dirotasi via `scripts/seed_admin.py` atau env `WAYANG_ADMIN_*`).
+
+### `POST /api/auth/login`
+**Request body**
+```json
+{ "username": "admin", "password": "wayang2026" }
+```
+**Response 200**
+```json
+{
+  "token": "<base64url>.<HMAC-SHA256>",
+  "token_type": "bearer",
+  "expires_in": 28800,
+  "user": { "username": "admin", "name": "Admin Wayang", "role": "admin" }
+}
+```
+**Error** — `401` bila username/password salah; `422` bila field kosong.
+
+### `GET /api/auth/me`
+Profil pengguna sesuai token. Header wajib: `Authorization: Bearer <token>`.
+**Response 200** → `UserOut`. **Error** → `401` bila token hilang/tidak valid/kedaluwarsa.
+
+### `GET /api/admin/profile`
+Endpoint contoh terproteksi (khusus role admin).
+**Response 200**
+```json
+{ "username": "admin", "name": "Admin Wayang", "role": "admin", "capabilities": ["manage_theme", "manage_content"] }
+```
+**Error** → `401` (token) atau `403` (role bukan admin).
+
+> Token stateless (HMAC-SHA256, TTL 8 jam). Di production, set `WAYANG_AUTH_SECRET` untuk menandatangani token.
+
+---
+
+## 9. Environment Variables
 
 | Variabel | Default | Deskripsi |
 | --- | --- | --- |
@@ -143,3 +179,7 @@ Mengembalikan **SVG** siluet (`image/svg+xml`). Contoh: `/api/silhouettes/arjuna
 | `WAYANG_MERIT_WEIGHT` | `0.55` | Bobot dimensi merit. |
 | `WAYANG_COVERAGE_WEIGHT` | `0.45` | Bobot dimensi coverage. |
 | `WAYANG_GRADING_CANVAS` | `512` | Ukuran kanvas normalisasi penilaian. |
+| `WAYANG_ADMIN_USERNAME` | `admin` | Username admin bawaan (bila `data/users.json` belum ada). |
+| `WAYANG_ADMIN_PASSWORD` | `wayang2026` | Password admin bawaan (bila `data/users.json` belum ada). |
+| `WAYANG_ADMIN_NAME` | `Admin Wayang` | Nama tampilan admin bawaan. |
+| `WAYANG_AUTH_SECRET` | *(secret dev)* | Kunci tanda tangan token. **Wajib diganti di production.** |

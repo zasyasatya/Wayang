@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import "@fontsource-variable/inter";
 import "./globals.css";
 import { AppShell } from "@/components/AppShell";
+import { ThemeProvider } from "@/components/theme/ThemeProvider";
+import { AuthProvider } from "@/components/auth/AuthProvider";
 
 export const metadata: Metadata = {
   title: {
@@ -28,15 +30,35 @@ export const metadata: Metadata = {
   },
 };
 
+/**
+ * Script pre-paint: terapkan tema & mode tersimpan ke <html> SEBELUM render
+ * pertama agar tidak ada kilatan tema default (FOUC).
+ */
+const themeBootstrap = `(function(){try{
+var t=localStorage.getItem("wayang.theme");
+var m=localStorage.getItem("wayang.themeMode");
+var d=document.documentElement;
+if(t)d.setAttribute("data-theme",t);
+var eff=m==="dark"?"dark":m==="light"?"light":((window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light");
+d.setAttribute("data-theme-mode",eff);
+}catch(e){}})();`;
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang="id">
+    <html lang="id" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeBootstrap }} />
+      </head>
       <body>
-        <AppShell>{children}</AppShell>
+        <ThemeProvider>
+          <AuthProvider>
+            <AppShell>{children}</AppShell>
+          </AuthProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

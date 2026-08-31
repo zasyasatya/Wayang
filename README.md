@@ -2,9 +2,9 @@
 
 > Platform pembelajaran budaya **wayang Bali** untuk semua orang. Kenali **jenis-jenis wayang**, **tokoh yang berperan**, pelajari **sejarahnya**, lalu **berlatih menggambar pola & siluet** yang dinilai otomatis. Dibangun dengan **FastAPI** (backend) dan **Next.js** (frontend).
 
-![stack](https://img.shields.io/badge/Backend-FastAPI-0b8a5a) ![stack](https://img.shields.io/badge/Frontend-Next.js-black) ![stack](https://img.shields.io/badge/CSS-Tailwind%204-06b6d4) ![build](https://img.shields.io/badge/Test-24%20passed-success) ![theme](https://img.shields.io/badge/Design-Mondays%20dashboard-2563eb)
+![stack](https://img.shields.io/badge/Backend-FastAPI-0b8a5a) ![stack](https://img.shields.io/badge/Frontend-Next.js-black) ![stack](https://img.shields.io/badge/CSS-Tailwind%204-06b6d4) ![build](https://img.shields.io/badge/Test-42%20passed-success) ![theme](https://img.shields.io/badge/Design-Tema%20Kamasan%20%2B%20Dark%20Mode-a8431f)
 
-> **Desain** mengikuti referensi **"Mondays"** dashboard (bersih, terang, aksen biru, badge status berwarna, sidebar putih + topbar pencarian). Token warna terpusat di `frontend/app/globals.css`.
+> **Desain** memakai token warna terpusat di `frontend/app/globals.css` dengan **4 tema aksen budaya Bali** (Kamasan, Samudra, Alas, Senja) + **mode terang/gelap** yang bisa diatur pengguna. Semua tampilan responsif (mobile → desktop). Token, tema, dan mode tersimpan di `localStorage` perangkat.
 
 ---
 
@@ -16,12 +16,47 @@
 | **Tokoh yang Berperan** | Profil tokoh dengan wanda & watak: Rama, Sita, Arjuna, Bima, Gatotkaca, Kresna, Hanoman, Rahwana, Sumbadra, Abimanyu, Srikandi, panasar Tualen/Merdah/Delem/Sangut, Betara Guru, Kalantaka. |
 | **Sejarah & Filosofi** | Asal-usul, masa Majapahit, Bali Hindu Klasik, pengakuan UNESCO, simbolisme gunungan & kiwa-tengen, dan perkembangan kontemporer. |
 | **Belajar Menggambar** | Studio atelir: lembar acuan profil wayang di kiri, kanvas seukuran di kanan. Tujuh langkah seni rupa (observasi → nawa sanga → blocking-in → kontur → landmark → detail → perhalus), dua lapisan (konstruksi + tinta), lalu **penilaian otomatis**. |
+| **Pengaturan Tema & Dark Mode** | Halaman `/pengaturan` untuk mengganti **tema warna** (Kamasan, Samudra, Alas, Senja) dan **mode terang/gelap** (Sistem/Terang/Gelap). Pilihan tersimpan di perangkat dan diterapkan ke seluruh halaman tanpa reload. Ada tombol cepat mode gelap di topbar. |
+| **Akun Admin** | Login admin (token Bearer 8 jam) di halaman Pengaturan; endpoint terproteksi `GET /api/admin/profile`. Kredensial bawaan: lihat bagian **Akun admin** di bawah. |
+| **Responsif** | Seluruh halaman (beranda, materi, studio menggambar, pengaturan) dirancang mobile-first: drawer navigasi, filter & rel langkah yang bisa di-gulir horizontal, tanpa teks bertumpuk di layar 320–430 px. |
 
 **Penilaian otomatis menggambar** menghitung dua dimensi utama:
 1. **Ketepatan Bentuk (Merit)** — seberapa dekat garis Anda dengan siluet referensi.
 2. **Kelengkapan Kontur (Coverage)** — seberapa besar kontur yang sudah digambar.
 
 Lengkap dengan umpan balik berbahasa Indonesia yang ramah untuk pemula.
+
+---
+
+## 🔐 Akun Admin
+
+| | |
+| --- | --- |
+| **Username** | `admin` |
+| **Password** | `wayang2026` |
+
+Login tersedia di **Pengaturan → Akun admin** (frontend) atau langsung ke API:
+
+```bash
+curl -s -X POST http://localhost:8000/api/auth/login \
+  -H "Content-Type: application/json" \
+  -d '{"username":"admin","password":"wayang2026"}'
+# → { "token": "...", "user": { "username": "admin", "name": "Admin Wayang", "role": "admin" } }
+
+curl -s http://localhost:8000/api/admin/profile \
+  -H "Authorization: Bearer <token>"
+```
+
+**Mengamankan / mengganti kredensial** (production):
+
+```bash
+cd backend
+python scripts/seed_admin.py -u admin -p 'PasswordKu-YangRahasia'   # tulis data/users.json (hash PBKDF2)
+export WAYANG_AUTH_SECRET='acak-sekret-panjang'                     # tanda tangan token
+# atau tanpa file: export WAYANG_ADMIN_USERNAME / WAYANG_ADMIN_PASSWORD / WAYANG_ADMIN_NAME
+```
+
+Detail endpoint: `docs/API_REFERENCE.md` (bagian Autentikasi).
 
 ---
 
@@ -121,7 +156,7 @@ Akses:
 ```bash
 cd backend
 python -m pytest -q
-# 24 passed
+# 42 passed
 ```
 
 **Frontend** — lint & build (untuk memastikan tidak ada error TypeScript/route):
@@ -171,17 +206,19 @@ Wayang/
 │   │   ├── main.py         # FastAPI app
 │   │   ├── config.py       # Pengaturan environment
 │   │   ├── schemas.py      # Model request/response
-│   │   ├── data/           # Konten materi (JSON)
+│   │   ├── security.py     # Hash password (PBKDF2) & token HMAC
+│   │   ├── data/           # Konten materi (JSON) [+ users.json bila di-seed]
 │   │   ├── assets/silhouettes/  # SVG siluet
-│   │   ├── routers/        # API routers
-│   │   └── services/       # Data store & mesin penilaian gambar
-│   ├── tests/              # Unit & integration tests
+│   │   ├── routers/        # API routers (termasuk auth.py)
+│   │   └── services/       # Data store, penilaian gambar & auth_service
+│   ├── tests/              # Unit & integration tests (termasuk test_auth.py)
 │   ├── scripts/generate_silhouettes.py
+│   ├── scripts/seed_admin.py  # Buat/rotasi kredensial admin
 │   └── requirements.txt
 ├── frontend/
-│   ├── app/                # Pages (App Router)
-│   ├── components/         # UI components
-│   ├── lib/                # API client & design tokens
+│   ├── app/                # Pages (App Router, termasuk pengaturan/)
+│   ├── components/         # UI components (theme/, auth/, studio/)
+│   ├── lib/                # API client, design tokens & themes.ts
 │   └── public/fonts/       # Font self-hosted
 └── docs/                   # Dokumentasi (PRD, SDLC, Design System, dll)
 ```
