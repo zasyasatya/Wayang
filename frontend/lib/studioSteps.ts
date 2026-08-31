@@ -29,7 +29,7 @@ export type StudioStep = {
   suggestedColor: string;
 };
 
-export const CONSTRUCT_BLUE = "#5b8def";
+export const CONSTRUCT_BLUE = "#3d5a80";
 export const INK_BLACK = "#1a140e";
 
 export const STUDIO_STEPS: StudioStep[] = [

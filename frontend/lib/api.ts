@@ -135,15 +135,61 @@ export interface GradingResult {
   metrics: Record<string, number>;
 }
 
+export interface AdminUser {
+  username: string;
+  name: string;
+  role: string;
+}
+
+export interface LoginResponse {
+  token: string;
+  token_type: string;
+  expires_in: number;
+  user: AdminUser;
+}
+
+/* Penyimpanan token admin (localStorage). */
+const TOKEN_KEY = "wayang.adminToken";
+
+export const tokenStore = {
+  get(): string | null {
+    if (typeof window === "undefined") return null;
+    try {
+      return window.localStorage.getItem(TOKEN_KEY);
+    } catch {
+      return null;
+    }
+  },
+  set(token: string | null): void {
+    if (typeof window === "undefined") return;
+    try {
+      if (token) window.localStorage.setItem(TOKEN_KEY, token);
+      else window.localStorage.removeItem(TOKEN_KEY);
+    } catch {
+      /* abaikan */
+    }
+  },
+};
+
 async function request<T>(path: string, init?: RequestInit): Promise<T> {
-  const res = await fetch(`${API_BASE}${path}`, {
-    headers: { "Content-Type": "application/json", ...(init?.headers || {}) },
-    cache: "no-store",
-    ...init,
-  });
+  const headers: Record<string, string> = {
+    "Content-Type": "application/json",
+    ...((init?.headers as Record<string, string>) || {}),
+  };
+  const token = tokenStore.get();
+  if (token) headers["Authorization"] = `Bearer ${token}`;
+
+  const res = await fetch(`${API_BASE}${path}`, { cache: "no-store", ...init, headers });
   if (!res.ok) {
     const detail = await res.text().catch(() => "");
-    throw new Error(`Request gagal (${res.status})${detail ? `: ${detail}` : ""}`);
+    let msg = `Request gagal (${res.status})`;
+    try {
+      const parsed = JSON.parse(detail);
+      if (typeof parsed?.detail === "string") msg = parsed.detail;
+    } catch {
+      if (detail) msg = `${msg}: ${detail.slice(0, 120)}`;
+    }
+    throw new Error(msg);
   }
   return res.json() as Promise<T>;
 }
@@ -171,6 +217,13 @@ export const api = {
       method: "POST",
       body: JSON.stringify({ image, silhouette_id }),
     }),
+  // Autentikasi admin
+  login: (username: string, password: string) =>
+    request<LoginResponse>("/auth/login", {
+      method: "POST",
+      body: JSON.stringify({ username, password }),
+    }),
+  me: () => request<AdminUser>("/auth/me"),
 };
 
 export function silhouetteSvgUrl(slug: string): string {

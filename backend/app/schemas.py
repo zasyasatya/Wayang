@@ -89,3 +89,30 @@ class PaginatedResponse(BaseModel):
     total: int
     offset: int = 0
     limit: int = 50
+
+
+# ---------------------------------------------------------------------------
+# Autentikasi
+# ---------------------------------------------------------------------------
+class LoginRequest(BaseModel):
+    """Permintaan masuk (login) admin."""
+
+    username: str = Field(min_length=1, max_length=64, description="Username admin.")
+    password: str = Field(min_length=1, max_length=128, description="Password admin.")
+
+
+class UserOut(BaseModel):
+    """Profil pengguna (tanpa data sensitif)."""
+
+    username: str
+    name: str
+    role: str
+
+
+class LoginResponse(BaseModel):
+    """Hasil login: token Bearer + profil pengguna."""
+
+    token: str
+    token_type: str = "bearer"
+    expires_in: int
+    user: UserOut

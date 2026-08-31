@@ -127,12 +127,12 @@ export default function TokohPage() {
         subtitle="Setiap tokoh membawa wanda dan watak tersendiri — dari kesatria halus ('alus') hingga raksasa ('denawa') dan panasar (pelawak)."
       />
 
-      <div className="mb-6 flex flex-wrap gap-2">
+      <div className="-mx-4 mb-6 flex gap-2 overflow-x-auto px-4 pb-1 sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0">
         {ROLES.map((r) => (
           <button
             key={r}
             onClick={() => setRole(r)}
-            className={`btn ${role === r ? "btn-primary" : "btn-outline"}`}
+            className={`btn shrink-0 ${role === r ? "btn-primary" : "btn-outline"}`}
           >
             {r}
           </button>
